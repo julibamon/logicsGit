@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Diablillo : MonoBehaviour
@@ -13,6 +14,9 @@ public class Diablillo : MonoBehaviour
     private Rigidbody2D rigidbody2;
     private Animator animator;
     private Vector2 movement;
+    private Collider2D enemyCollider;
+
+
     private bool facingRight;
 
 
@@ -37,6 +41,7 @@ public class Diablillo : MonoBehaviour
     //impulso hacia atras al recibir daño del jugador
     public float pushBack = 20f; //fuerza de impulso hacia atras
     private bool isKnocked = false; //está knockeado?
+    private bool isDead=false; //está muerto? (var usada para la animacion de mueriendo)
 
 
     void Awake()
@@ -44,6 +49,7 @@ public class Diablillo : MonoBehaviour
         rigidbody2 = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyCollider = GetComponent<Collider2D>();
     }
     // Start is called before the first frame update
     void Start()
@@ -62,6 +68,7 @@ public class Diablillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead == false){
         //AQUI LA LÓGICA SERÍA, si está persiguiendo el enemigo al player, que persiga aún chocándose con la pared
         //si no está persiguiendo, que haga flip cada vez que el raycast detecte la pared
 
@@ -88,12 +95,13 @@ public class Diablillo : MonoBehaviour
                 Flip();
             }
         }
+        }
         
         
     }
         void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
-        if (!isKnocked) //para dejar de mover el enemigo si está knockeado
+        if (!isKnocked && !isDead) //para dejar de mover el enemigo si está knockeado (o muerto obviamente)
         {
             
         float horizontalVelocity;
@@ -138,21 +146,30 @@ public class Diablillo : MonoBehaviour
     //RECIBIR DAÑO
        public void Damaged(int cant, Vector2 attackDirection) //RECIBIR DAÑO
     {
-        if (!isInvulnerable) //podemos recibir daño
+        if (!isInvulnerable && !isDead) //podemos recibir daño
         {
             currentHealth = currentHealth - cant; //según el daño que nos quita el player
 
             if (currentHealth <= 0) //para no quedarnos con valores negativos de vida
             {
                 currentHealth = 0;
-                gameObject.SetActive(false);
-            }
+                isDead=true;
+                rigidbody2.velocity=Vector2.zero; // que deje de moverse el enemigo
+                rigidbody2.bodyType = RigidbodyType2D.Kinematic; //que el collider no interfiera el paso cuando el enemigo está muerto
+                GetComponent<Collider2D>().isTrigger=true; //convertir el collider en trigger
+                isFollowing=false; //no seguir al player
+                isKnocked=false; //no hacer daño al player
+                
+
+                animator.SetTrigger("Die"); //LANZAR EL TRIGGER DE LA ANIMACIÓN
+            } else{
             isKnocked = true; //para que deje de moverse en update, se quede quieto y entonces se eche para atrás tras recibir el golpe
              rigidbody2.velocity = new Vector2(attackDirection.x * pushBack, rigidbody2.velocity.y); //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
             
              
             StartCoroutine(coroutinePushBack());
             StartCoroutine(coroutineInvulnerable()); //empieza tiempo de invulnerabilidad
+        }
         }
     }
 
@@ -181,7 +198,7 @@ public class Diablillo : MonoBehaviour
     //HACER DAÑO AL PLAYER AL COLISIONARLE
     private void OnCollisionStay2D(Collision2D coll) //usamos Stay y no Enter para no ser invulnerables para siempre si nos quedamos tocando al enemigo
     {
-        if (coll.gameObject.CompareTag("Player")) //establecemos que solo ocurra si estamos ante el player (tag player)
+        if (coll.gameObject.CompareTag("Player") && !isDead) //establecemos que solo ocurra si estamos ante el player (tag player) y estamos vivos
         {
             PlayerController pj = coll.gameObject.GetComponent<PlayerController>();
             if(pj != null)
@@ -202,5 +219,11 @@ public class Diablillo : MonoBehaviour
 
         }
     }
+
+    //MORIR (DESACTIVARSE)
+    public void DieAndDisable()
+{
+    gameObject.SetActive(false);
+}
 
 }
