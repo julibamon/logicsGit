@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
 
 
     //health
-    public int maxHealth;
-    public int currentHealth;
+    private int maxHealth;
+    private int currentHealth;
 
     public RectTransform healthBar; //RectTransform de los corazones llenos
     public RectTransform deadBar; //RectTransform de los corazones vacíos
@@ -62,8 +62,10 @@ public class PlayerController : MonoBehaviour
     {
         jumpsLeft = extraJumps;
 
-        //health
-        UpdateHealthUI();
+       ApplySaveDataToPlayer();
+       UpdateDataPlayer();
+       GameController.Instance.SaveGame();
+
     }
 
     // Update is called once per frame
@@ -134,6 +136,14 @@ public class PlayerController : MonoBehaviour
             isHurted=false;
          }
 
+         //PARA GUARDAR PARTIDA
+        // Guardar partida desde la tecla P (solo para pruebas)
+    if (Input.GetKeyDown(KeyCode.P))
+    {
+        UpdateDataPlayer(); // primero actualizamos los datos en memoria
+        GameController.Instance.SaveGame(); // luego guardamos en el JSON
+        Debug.Log("Partida guardada desde PlayerController (tecla P)");
+    }
     }
     void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
@@ -187,6 +197,42 @@ public class PlayerController : MonoBehaviour
         float deadWidth = (maxHealth-currentHealth)*widthPerHealth;
         deadBar.sizeDelta = new Vector2(deadWidth, deadBar.sizeDelta.y);
     }
+
+    //DAR LOS DATOS AL PLAYER, QUE VIENEN DEL SAVEDATA (donde se dan los valores reales a las variables)
+    public void ApplySaveDataToPlayer()
+    {
+        if(GameController.Instance!=null && GameController.Instance.currentSD != null)
+        {
+            PlayerData PlayerData = GameController.Instance.currentSD.playerData;
+
+            maxHealth=PlayerData.maxHealth;
+            currentHealth=PlayerData.currentHealth;
+            
+            transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY);
+
+            UpdateHealthUI();
+        }
+    }
+
+    //CAMBIAR LOS DATOS DEL PLAYER CUANDO QUERAMOS GUARDAR EN SAVEDATA
+    public void UpdateDataPlayer()
+    {
+        if (GameController.Instance != null && GameController.Instance.currentSD != null)
+    {
+        // Tomamos los valores del jugador y los volcamos en el save
+        GameController.Instance.currentSD.playerData.maxHealth = maxHealth;
+        GameController.Instance.currentSD.playerData.currentHealth = currentHealth;
+        GameController.Instance.currentSD.playerData.checkpointX = transform.position.x;
+        GameController.Instance.currentSD.playerData.checkpointY = transform.position.y;
+
+        Debug.Log("SaveData actualizado desde PlayerController");
+    }
+    else
+    {
+        Debug.LogWarning("No se pudo actualizar SaveDatan porque GameController o currentSD es null");
+    }
+    }
+
 
     public void Damaged(int cant)
     {
