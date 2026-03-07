@@ -28,13 +28,6 @@ public class GameController : MonoBehaviour
         }
        
 
-
-         //-------------------------------------------
-        
-        LoadGame(1); //SOLO PARA TESTING, PORQUE NO EXISTE UN MENÚ
-        //------------------------------------------------------
-        
-
     }
 
     //crear nueva partida
@@ -48,7 +41,7 @@ public class GameController : MonoBehaviour
         playerData.currentHealth=5;
         playerData.checkpointX=13.433f;
         playerData.checkpointY=-1.444f;
-        playerData.currentNameScene=SceneManager.GetActiveScene().name; //escena inicial = escena activa
+        playerData.currentNameScene="SampleScene"; //escena inicial, SampleScene
 
         //datos inciales del mundo
         WorldData worldData = new WorldData();
@@ -97,6 +90,26 @@ public class GameController : MonoBehaviour
 
         }
     }
+
+
+    //Cargar partida si existe o crear una nueva DESDE EL MENÚ DE SELECCIÓN DE SLOTS
+
+public void SlotSelectorPlayOrLoad(int slotId)
+    {
+        if (SaveSystem.SlotExists(slotId)) //EXISTE PARTIDA EN EL SLOT SELECCIONADO
+        {
+            LoadGame(slotId);
+            Debug.Log($"Existía el slot {slotId} seleccionado desde el menú, por eso cargamos la partida");
+        }
+        else
+        {
+            NewGame(slotId); //NO EXISTE LA PARTIDA EN EL SLOT SELECCIONADO
+            Debug.Log($"No existía el slot {slotId} seleccionado desde el menú, por eso creamos una partida nueva");
+        }
+        
+        SceneManager.LoadScene(playerData.currentNameScene); //cargamos la escena correpondiente
+    }
+    
 
 
 }
