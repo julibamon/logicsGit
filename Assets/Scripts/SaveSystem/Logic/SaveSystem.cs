@@ -24,10 +24,12 @@ public static class SaveSystem //la clase será estatica
     {
         String path = GetPath(slotId);
         data.slotIndex = slotId;
+        Debug.Log("DEBUGGGGGGGG->Guardando JSON en: " + path);
+
         
         String json = JsonUtility.ToJson(data, true); //true es para ponerlo legible, pretty print
 
-        File.WriteAllText(json, path);
+        File.WriteAllText(path, json);
 
         Debug.Log($"Guardado en la ruta {path} en el slot {slotId}");
 

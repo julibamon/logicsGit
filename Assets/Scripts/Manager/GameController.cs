@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance; //para acceder desde cualquier script al game controller (único)
+    public static GameController Instance; //para acceder desde cualquier script al game controller (único)
 
     public SaveData currentSD; //datos actuales, la partida "en curso"
     public int currentSlotId = -1; //se inicializa a -1 porque no hay ninguno seleccionado todavía
 
+    public PlayerData playerData;
+
 
     private void Awake()
     {
-        if (instance == null) //si no existe un gamecontroller
+        if (Instance == null) //si no existe un gamecontroller
         {
-           instance=this; //que sea este el gamecontrollercontin
+           Instance=this; //que sea este el gamecontrollercontin
            DontDestroyOnLoad(gameObject); //que no se destruya el gamecontroller al cambiar de escena
 
         }
@@ -24,6 +26,8 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject); //si ya existe un gamecontroller, destruye este duplicado
         }
+       
+
     }
 
     //crear nueva partida
@@ -32,12 +36,12 @@ public class GameController : MonoBehaviour
         currentSlotId = slotId;
 
         //datos iniciales personaje
-        PlayerData playerData = new PlayerData();
+        playerData = new PlayerData();
         playerData.maxHealth=5;
         playerData.currentHealth=5;
         playerData.checkpointX=13.433f;
         playerData.checkpointY=-1.444f;
-        playerData.currentNameScene=SceneManager.GetActiveScene().name; //escena inicial = escena activa
+        playerData.currentNameScene="SampleScene"; //escena inicial, SampleScene
 
         //datos inciales del mundo
         WorldData worldData = new WorldData();
@@ -64,6 +68,7 @@ public class GameController : MonoBehaviour
         else
         {
             SaveSystem.SaveGame(currentSD, currentSlotId);
+            Debug.Log("Guardada la partida");
         }
     }
 
@@ -79,10 +84,32 @@ public class GameController : MonoBehaviour
             currentSlotId = slotId; //hago esto porque este es el punto donde asigno que el currentslot es el de la partida que se está jugando, porque es la que estoy cargando, y me sirve para saber cual es el currentslot al guardar
             currentSD = SaveSystem.LoadGame(slotId);
 
+            playerData = currentSD.playerData;
+
             Debug.Log($"Cargada la partida del slot {slotId}");
 
         }
     }
+
+
+    //Cargar partida si existe o crear una nueva DESDE EL MENÚ DE SELECCIÓN DE SLOTS
+
+public void SlotSelectorPlayOrLoad(int slotId)
+    {
+        if (SaveSystem.SlotExists(slotId)) //EXISTE PARTIDA EN EL SLOT SELECCIONADO
+        {
+            LoadGame(slotId);
+            Debug.Log($"Existía el slot {slotId} seleccionado desde el menú, por eso cargamos la partida");
+        }
+        else
+        {
+            NewGame(slotId); //NO EXISTE LA PARTIDA EN EL SLOT SELECCIONADO
+            Debug.Log($"No existía el slot {slotId} seleccionado desde el menú, por eso creamos una partida nueva");
+        }
+        
+        SceneManager.LoadScene(playerData.currentNameScene); //cargamos la escena correpondiente
+    }
+    
 
 
 }
