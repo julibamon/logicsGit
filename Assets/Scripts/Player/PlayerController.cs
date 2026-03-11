@@ -136,14 +136,7 @@ public class PlayerController : MonoBehaviour
             isHurted=false;
          }
 
-         //PARA GUARDAR PARTIDA
-        // Guardar partida desde la tecla P (solo para pruebas)
-    if (Input.GetKeyDown(KeyCode.P))
-    {
-        UpdateDataPlayer(); // primero actualizamos los datos en memoria
-        GameController.Instance.SaveGame(); // luego guardamos en el JSON
-        Debug.Log("Partida guardada desde PlayerController (tecla P)");
-    }
+         
     }
     void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
