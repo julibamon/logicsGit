@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     //Estoy recibiendo daño?
     private bool isHurted;
 
+    //MENU DE MUERTE
+    public GameObject DeathMenu;
+
 
     void Awake()
     {
@@ -134,9 +137,7 @@ public class PlayerController : MonoBehaviour
             rigidbody2.velocity = Vector2.zero;
             animator.SetTrigger("Hit");
             isHurted=false;
-         }
-
-         
+         }   
     }
     void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
@@ -239,8 +240,23 @@ public class PlayerController : MonoBehaviour
             }
             isHurted=true;
             UpdateHealthUI(); //que se actualicen los corazones :)
+
+            if (currentHealth == 0)
+            {
+                Die();
+                return;
+            }
             StartCoroutine(coroutineInvulnerable()); //empieza tiempo de invulnerabilidad
         }
+    }
+
+
+
+    //método morir
+    private void Die()
+    {
+        Time.timeScale = 0f; //se pausa el juego
+        DeathMenu.SetActive(true); //se despliega el menú
     }
 
     private IEnumerator coroutineInvulnerable()

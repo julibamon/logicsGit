@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
 
     public PlayerData playerData;
 
+    
+
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class GameController : MonoBehaviour
        
 
     }
+
 
     //crear nueva partida
     public void NewGame(int slotId)
