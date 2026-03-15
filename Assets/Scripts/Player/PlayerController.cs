@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,9 +36,11 @@ public class PlayerController : MonoBehaviour
     public int playerDamage; //cuánto daño hace la espada del player
 
 
-    //health
+    //health y saveData
     private int maxHealth;
     private int currentHealth;
+
+    private List<String> skillsList;
 
     public RectTransform healthBar; //RectTransform de los corazones llenos
     public RectTransform deadBar; //RectTransform de los corazones vacíos
@@ -109,7 +112,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigidbody2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
-            else if(jumpsLeft > 0)
+            else if(jumpsLeft > 0 && skillsList.Contains("DoubleJump")) //si tenemos los saltos reiniciados y hemos cogido la habilidad
             {
                 // reset vertical para consistencia
                 rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0f);
@@ -201,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
             maxHealth=PlayerData.maxHealth;
             currentHealth=PlayerData.currentHealth;
-            
+            skillsList = PlayerData.skillsList;
             transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY);
 
             UpdateHealthUI();
@@ -218,6 +221,7 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.currentSD.playerData.currentHealth = currentHealth;
         GameController.Instance.currentSD.playerData.checkpointX = transform.position.x;
         GameController.Instance.currentSD.playerData.checkpointY = transform.position.y;
+        GameController.Instance.currentSD.playerData.skillsList = skillsList;
 
         Debug.Log("SaveData actualizado desde PlayerController");
     }

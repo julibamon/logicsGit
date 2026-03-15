@@ -11,6 +11,15 @@ public class ComestibleDobleSalto : MonoBehaviour
 
     public GameObject comestible;
 
+    void Start()
+    {
+        if (GameController.Instance.currentSD.playerData.skillsList.Contains("DoubleJump")) //desactivamos el comestible si ya lo hemos comido
+        {
+            comestible.SetActive(false);
+
+        }
+    }
+
     void Update()
     {
         if(isPlayerHere && Input.GetKeyDown(KeyCode.E))
@@ -24,6 +33,8 @@ public class ComestibleDobleSalto : MonoBehaviour
 
         comestible.SetActive(false);
         Debug.Log("Comido el comestible");
+        GameController.Instance.currentSD.playerData.skillsList.Add("DoubleJump"); // añadimos el doble salto a la lista de habilidades
+
     }
 
     //lógica de entrar en rango del comestible
