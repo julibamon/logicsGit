@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer; //con esto checkeamos qué layer de la lista de layers es el suelo
     public float groundCheckRadius; //para ver cómo es de grande nuestro groundcheck
-    private bool isGrounded;
+    public bool isGrounded;
+    public bool isInDialogue = false; //para controlar si el player está en dialogo o no
 
     //attacking
     private bool isAttacking;
@@ -77,6 +78,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update() //aqui metemos qué teclas interactuan
     {
+        if (isInDialogue) //si el player está en un dialogo
+        {
+            movement=Vector2.zero; //que no se pueda mover el player
+            rigidbody2.velocity=Vector2.zero;
+            return; //que no siga ejecutandose codigo
+        }
         //MOVEMENT (solo cuando no está atacando)
         if(isAttacking==false){
 
@@ -167,7 +174,7 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
         //long idle
-       if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+       if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle") && !isInDialogue) { //si venimos de idle Y NO ESTAMOS DIALOGANDO, entonces podemos hacer longidle
 			longIdleTimer += Time.deltaTime;
 
 			if (longIdleTimer >= longIdleTime) {
@@ -182,6 +189,17 @@ public class PlayerController : MonoBehaviour
         float localScaleX= transform.localScale.x;
         localScaleX = localScaleX * -1f; //para inventir el valor se multiplica por -1 (aqui es donde literalmente le damos la vuelta al pj)
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z); //aqui lo aplicamos
+    }
+
+    //para hacer flip cuando estamos en un dialogo y mirar hacia el npc (metodo referenciado en los scripts de los npc)
+    public void LookAtNPC(Vector2 npcPosition)
+    {
+        if((npcPosition.x>transform.position.x && !facingRight) || (npcPosition.x < transform.position.x && facingRight))
+        {
+            Flip(); //hacemos flip si estamos "dados la vuelta" respecto al npc
+           
+        }
+        animator.Play("Idle");
     }
 
     //para que salga el numero de corazones segun la vida
