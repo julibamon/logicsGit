@@ -25,6 +25,10 @@ public class Viejitas : MonoBehaviour
 
     private bool playerIsGrounded;
 
+    //floorPoints para reposicionar al player cuando esté en dialogo con las viejitas
+    public GameObject floorPointLeft;
+    public GameObject floorPointRight;
+
 
 
     void Update()
@@ -33,7 +37,7 @@ public class Viejitas : MonoBehaviour
         {
             if (!isTalking) //si no está hablando la [E] empieza la conversacion
             {
-                StartDialogue();
+                StartCoroutine(MoveToTalkPoint());
             } else if (dialogueText.text == dialogueArea[lineIndex]) //si ya hemos mostrado todos los caracteres de ese dialogo (la condicion coincide)
             {                                                         //la [E] pasa al siguiente dialogo
                 NextDialogue(); //pasamos al siguiente dialogo
@@ -46,12 +50,41 @@ public class Viejitas : MonoBehaviour
            
         }
     }
+    //corrutina de mover al player al lado de las viejas al punto concreto para hablar
+    private IEnumerator MoveToTalkPoint()
+    {
+        isTalking=true;
+        playerController.isInDialogue=true; //ponemos a true la variable is in dialogue para controlar en playercontroller y restringir movimiento etc
 
+        Transform selectedPoint;
+
+        if(playerController.transform.position.x < transform.position.x) //las viejitas estan a la derecha del floorpoint
+        {
+            selectedPoint = floorPointLeft.transform;
+        }
+        else    //las viejitas estan a la izq
+        {
+            selectedPoint = floorPointRight.transform;
+        }
+
+        //movemos al player
+        while(Vector2.Distance(playerController.transform.position, selectedPoint.position)> 0.05f)
+        {
+            playerController.transform.position = Vector2.MoveTowards(playerController.transform.position, selectedPoint.position, 1.5f*Time.deltaTime);
+        
+            yield return null;        
+        }
+
+        playerController.LookAtNPC(transform.position); //hacemos flip hacia las viejas si hace falta
+
+        StartDialogue();
+    }
+
+
+
+    //empezar dialogo
     public void StartDialogue()
     {
-        playerController.isInDialogue=true; //ponemos a true la variable is in dialogue para controlar en playercontroller y restringir movimiento etc
-        isTalking = true;
-        playerController.LookAtNPC(transform.position); //hacemos flip hacia las viejas si hace falta
         dialogueCanvas.SetActive(true); //abrimos el canvas de dialogo
         upCanvas.SetActive(false);      //quitamos el mensaje encima de las viejas "Hablar [E]"
         lineIndex=0;
@@ -72,6 +105,7 @@ public class Viejitas : MonoBehaviour
             dialogueCanvas.SetActive(false); //desactivamos el panel
             upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
             playerController.isInDialogue=false;
+
         }
     }
 
