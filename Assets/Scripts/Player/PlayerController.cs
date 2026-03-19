@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer; //con esto checkeamos qué layer de la lista de layers es el suelo
     public float groundCheckRadius; //para ver cómo es de grande nuestro groundcheck
-    private bool isGrounded;
+    public bool isGrounded;
+    public bool isInDialogue = false; //para controlar si el player está en dialogo o no
 
     //attacking
     private bool isAttacking;
@@ -35,9 +37,11 @@ public class PlayerController : MonoBehaviour
     public int playerDamage; //cuánto daño hace la espada del player
 
 
-    //health
+    //health y saveData
     private int maxHealth;
     private int currentHealth;
+
+    private List<String> skillsList;
 
     public RectTransform healthBar; //RectTransform de los corazones llenos
     public RectTransform deadBar; //RectTransform de los corazones vacíos
@@ -49,6 +53,9 @@ public class PlayerController : MonoBehaviour
 
     //Estoy recibiendo daño?
     private bool isHurted;
+
+    //MENU DE MUERTE
+    public GameObject DeathMenu;
 
 
     void Awake()
@@ -71,6 +78,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update() //aqui metemos qué teclas interactuan
     {
+        if (isInDialogue) //si el player está en un dialogo
+        {
+            movement=Vector2.zero; //que no se pueda mover el player
+            rigidbody2.velocity=Vector2.zero;
+            return; //que no siga ejecutandose codigo
+        }
         //MOVEMENT (solo cuando no está atacando)
         if(isAttacking==false){
 
@@ -106,7 +119,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigidbody2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
-            else if(jumpsLeft > 0)
+            else if(jumpsLeft > 0 && skillsList.Contains("DoubleJump")) //si tenemos los saltos reiniciados y hemos cogido la habilidad
             {
                 // reset vertical para consistencia
                 rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0f);
@@ -134,9 +147,7 @@ public class PlayerController : MonoBehaviour
             rigidbody2.velocity = Vector2.zero;
             animator.SetTrigger("Hit");
             isHurted=false;
-         }
-
-         
+         }   
     }
     void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
@@ -163,7 +174,7 @@ public class PlayerController : MonoBehaviour
             isAttacking = false;
         }
         //long idle
-       if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle")) {
+       if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Idle") && !isInDialogue) { //si venimos de idle Y NO ESTAMOS DIALOGANDO, entonces podemos hacer longidle
 			longIdleTimer += Time.deltaTime;
 
 			if (longIdleTimer >= longIdleTime) {
@@ -178,6 +189,17 @@ public class PlayerController : MonoBehaviour
         float localScaleX= transform.localScale.x;
         localScaleX = localScaleX * -1f; //para inventir el valor se multiplica por -1 (aqui es donde literalmente le damos la vuelta al pj)
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z); //aqui lo aplicamos
+    }
+
+    //para hacer flip cuando estamos en un dialogo y mirar hacia el npc (metodo referenciado en los scripts de los npc)
+    public void LookAtNPC(Vector2 npcPosition)
+    {
+        if((npcPosition.x>transform.position.x && !facingRight) || (npcPosition.x < transform.position.x && facingRight))
+        {
+            Flip(); //hacemos flip si estamos "dados la vuelta" respecto al npc
+           
+        }
+        animator.Play("Idle");
     }
 
     //para que salga el numero de corazones segun la vida
@@ -200,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
             maxHealth=PlayerData.maxHealth;
             currentHealth=PlayerData.currentHealth;
-            
+            skillsList = PlayerData.skillsList;
             transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY);
 
             UpdateHealthUI();
@@ -217,6 +239,7 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.currentSD.playerData.currentHealth = currentHealth;
         GameController.Instance.currentSD.playerData.checkpointX = transform.position.x;
         GameController.Instance.currentSD.playerData.checkpointY = transform.position.y;
+        GameController.Instance.currentSD.playerData.skillsList = skillsList;
 
         Debug.Log("SaveData actualizado desde PlayerController");
     }
@@ -239,8 +262,23 @@ public class PlayerController : MonoBehaviour
             }
             isHurted=true;
             UpdateHealthUI(); //que se actualicen los corazones :)
+
+            if (currentHealth == 0)
+            {
+                Die();
+                return;
+            }
             StartCoroutine(coroutineInvulnerable()); //empieza tiempo de invulnerabilidad
         }
+    }
+
+
+
+    //método morir
+    private void Die()
+    {
+        Time.timeScale = 0f; //se pausa el juego
+        DeathMenu.SetActive(true); //se despliega el menú
     }
 
     private IEnumerator coroutineInvulnerable()
