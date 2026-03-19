@@ -7,6 +7,8 @@ public class Viejitas : MonoBehaviour
 {
     private bool isPlayerHere = false;
 
+    private Animator animator;
+
     public GameObject upCanvas; //texto encima del comestible
 
     public GameObject dialogueCanvas;
@@ -30,6 +32,10 @@ public class Viejitas : MonoBehaviour
     public GameObject floorPointRight;
 
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -41,6 +47,7 @@ public class Viejitas : MonoBehaviour
             } else if (dialogueText.text == dialogueArea[lineIndex]) //si ya hemos mostrado todos los caracteres de ese dialogo (la condicion coincide)
             {                                                         //la [E] pasa al siguiente dialogo
                 NextDialogue(); //pasamos al siguiente dialogo
+
             }
             else //si aun no se han mostrado todos las frases del cuadro de dialogo, la [E] acelera el tipeo por si no quieres esperar
             {
@@ -48,6 +55,15 @@ public class Viejitas : MonoBehaviour
                 dialogueText.text = dialogueArea[lineIndex]; //mostramos todos los caracteres que faltan
             }
            
+        }
+        //CONTROL ANIMACION VIEJITAS
+        if(isTalking && lineIndex < dialogueArea.Length && dialogueText.text != dialogueArea[lineIndex]) //si estoy en dialogo y aun quedan cosas por decir
+        {
+            animator.SetBool("isTalking", true); //que salga animacion de hablar
+        }
+        else
+        {
+            animator.SetBool("isTalking", false); //que vuelva a idle
         }
     }
     //corrutina de mover al player al lado de las viejas al punto concreto para hablar
@@ -105,6 +121,7 @@ public class Viejitas : MonoBehaviour
             dialogueCanvas.SetActive(false); //desactivamos el panel
             upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
             playerController.isInDialogue=false;
+            lineIndex = 0;
 
         }
     }
