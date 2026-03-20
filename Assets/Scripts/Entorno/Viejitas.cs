@@ -103,7 +103,14 @@ public class Viejitas : MonoBehaviour
     {
         dialogueCanvas.SetActive(true); //abrimos el canvas de dialogo
         upCanvas.SetActive(false);      //quitamos el mensaje encima de las viejas "Hablar [E]"
-        lineIndex=0;
+        if (GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck")) //si ya conocemos a las viejitas
+        {
+            lineIndex=6; //empezamos el dialogo en index 6
+        }
+        else //si no las conocemos
+        {
+            lineIndex=0; //empezamos desde el principio
+        }
         StartCoroutine(LinesCoroutine()); //llamamos a la corrutina
 
     }
@@ -122,6 +129,7 @@ public class Viejitas : MonoBehaviour
             upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
             playerController.isInDialogue=false;
             lineIndex = 0;
+            GameController.Instance.currentSD.worldData.activatedEvents.Add("ViejitasCheck");
 
         }
     }
