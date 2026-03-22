@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEditor.Search;
 
 public class Viejitas : MonoBehaviour
 
@@ -15,7 +16,7 @@ public class Viejitas : MonoBehaviour
 
     private PlayerController playerController;
 
-    [SerializeField, TextArea(4,6)] private string[] dialogueArea; //lineas de dialogo de las viejitas
+    [SerializeField, TextArea(4,7)] private string[] dialogueArea; //lineas de dialogo de las viejitas
     //TextArea(minimo,maximo) numero de lineas en el cuadro de texto
 
     [SerializeField] private TMP_Text dialogueText;
@@ -25,12 +26,26 @@ public class Viejitas : MonoBehaviour
 
     public float typingTime = 0.05f;
 
+    private bool isShowingOptions=false; //para cuando estamos mostrando "opciones"(botones) y no texto del inspector
+
     private bool playerIsGrounded;
 
     //floorPoints para reposicionar al player cuando esté en dialogo con las viejitas
     public GameObject floorPointLeft;
     public GameObject floorPointRight;
 
+
+    //botones opciones recetas
+    public GameObject tomatoIncorrectButton;
+    public GameObject tomatoCorrectButton;
+
+    public GameObject saltIncorrectButton;
+    public GameObject saltCorrectButton;
+
+    public GameObject oilIncorrectButton;
+    public GameObject oilCorrectButton;
+
+    public GameObject noIdeaButton;
 
     void Awake()
     {
@@ -54,10 +69,14 @@ public class Viejitas : MonoBehaviour
                 StopAllCoroutines();
                 dialogueText.text = dialogueArea[lineIndex]; //mostramos todos los caracteres que faltan
             }
+            if (lineIndex == 6)
+            {
+                ShowOptions();
+            }
            
         }
         //CONTROL ANIMACION VIEJITAS
-        if(isTalking && lineIndex < dialogueArea.Length && dialogueText.text != dialogueArea[lineIndex]) //si estoy en dialogo y aun quedan cosas por decir
+        if(isTalking && !isShowingOptions && lineIndex < dialogueArea.Length && dialogueText.text != dialogueArea[lineIndex]) //si estoy en dialogo y aun quedan cosas por decir
         {
             animator.SetBool("isTalking", true); //que salga animacion de hablar
         }
@@ -129,7 +148,10 @@ public class Viejitas : MonoBehaviour
             upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
             playerController.isInDialogue=false;
             lineIndex = 0;
+            if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck"))
+            {
             GameController.Instance.currentSD.worldData.activatedEvents.Add("ViejitasCheck");
+            }
 
         }
     }
@@ -166,6 +188,29 @@ public class Viejitas : MonoBehaviour
             playerController=null;
             upCanvas.SetActive(false);
         }
+    }
+
+    //para contestar a las viejas
+     private void ShowOptions()
+    {
+    isShowingOptions=true;
+    //TOMATE
+    bool hasTomate = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaTomate");
+    tomatoCorrectButton.SetActive(hasTomate);
+    tomatoIncorrectButton.SetActive(!hasTomate);
+
+    //SAL
+    bool hasSal = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaSal");
+    saltCorrectButton.SetActive(hasSal);
+    saltIncorrectButton.SetActive(!hasSal);
+
+    //ACEITE
+    bool hasAceite = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaAceite");
+    oilCorrectButton.SetActive(hasAceite);
+    oilIncorrectButton.SetActive(!hasAceite);
+
+    //SKIP
+    noIdeaButton.SetActive(true);
     }
 
 }
