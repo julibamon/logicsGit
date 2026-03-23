@@ -202,6 +202,16 @@ public class PlayerController : MonoBehaviour
         animator.Play("Idle");
     }
 
+    public void LookAtAlquimista()
+    {
+        if(!facingRight)
+        {
+            Flip(); //hacemos flip si estamos mirando a la izquierda
+           
+        }
+        animator.Play("Idle");
+    }
+
     //para que salga el numero de corazones segun la vida
     void UpdateHealthUI()
     {

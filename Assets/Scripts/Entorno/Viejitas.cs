@@ -11,8 +11,7 @@ public class Viejitas : MonoBehaviour
 
     private Animator animator;
 
-    public GameObject upCanvas; //texto encima del comestible
-
+    public GameObject upCanvas; //texto encima del npc
     public GameObject dialogueCanvas;
 
     private PlayerController playerController;
