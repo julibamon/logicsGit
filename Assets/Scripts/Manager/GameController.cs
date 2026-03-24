@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
 
     public PlayerData playerData;
 
+    //para cambiar entre escenas
+    public Vector2 nextSpawnPosition;
+    public bool useNextSpawn=false;
+
     
 
 

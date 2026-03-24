@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DeathMenu;
 
 
+    
     void Awake()
     {
         rigidbody2 = GetComponent<Rigidbody2D>();
@@ -69,9 +72,14 @@ public class PlayerController : MonoBehaviour
     {
         jumpsLeft = extraJumps;
 
+        
        ApplySaveDataToPlayer();
        UpdateDataPlayer();
-       GameController.Instance.SaveGame();
+        if (GameController.Instance.useNextSpawn)// Si venimos de un TP, la posición la dicta nextSpawnPosition
+        {
+            transform.position = GameController.Instance.nextSpawnPosition;
+            GameController.Instance.useNextSpawn = false;
+        }
 
     }
 
@@ -233,8 +241,10 @@ public class PlayerController : MonoBehaviour
             maxHealth=PlayerData.maxHealth;
             currentHealth=PlayerData.currentHealth;
             skillsList = PlayerData.skillsList;
-            transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY);
 
+        
+          
+                transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY); 
             UpdateHealthUI();
         }
     }
@@ -250,6 +260,7 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.currentSD.playerData.checkpointX = transform.position.x;
         GameController.Instance.currentSD.playerData.checkpointY = transform.position.y;
         GameController.Instance.currentSD.playerData.skillsList = skillsList;
+        GameController.Instance.currentSD.playerData.currentNameScene = SceneManager.GetActiveScene().name;
 
         Debug.Log("SaveData actualizado desde PlayerController");
     }
