@@ -156,6 +156,7 @@ private void NextDialogue()
         if(lineIndex == 0 && GameController.Instance.currentSD.worldData.itemsListW.Contains("HouseKEY")) //momento en el que le damos la llave
         {
             lineIndex++;
+            StartCoroutine(LinesCoroutine()); //hacemos esto para que pueda salir el siguiente dialogo
             return;
         }
         if (lineIndex == 1) //le acabamos de dar la llave
@@ -184,7 +185,7 @@ private void NextDialogue()
 
     public IEnumerator goingHomeCoroutine()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(5f);
         isInside = true;
         UpdateColliders();
         upCanvas.transform.localPosition = new Vector3(0.1f,-0.045f,0f); //movemos el canvas
