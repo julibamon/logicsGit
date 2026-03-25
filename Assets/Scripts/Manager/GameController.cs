@@ -17,6 +17,10 @@ public class GameController : MonoBehaviour
     public Vector2 nextSpawnPosition;
     public bool useNextSpawn=false;
 
+    //para saber si flipear al personaje tras moverse entre escenas
+    public bool flipOnSpawn = false;
+
+
     
 
 

@@ -79,6 +79,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = GameController.Instance.nextSpawnPosition;
             GameController.Instance.useNextSpawn = false;
+
+            if (GameController.Instance.flipOnSpawn)
+            {
+                Flip();
+            }
         }
 
     }
