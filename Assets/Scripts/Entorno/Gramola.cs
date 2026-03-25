@@ -27,6 +27,10 @@ public class Gramola : MonoBehaviour
     {
         animator.SetTrigger("Clicked");
 
+        //recuperar vida maxima
+        playerController.currentHealth=playerController.maxHealth;
+        playerController.UpdateHealthUI();
+
        playerController.UpdateDataPlayer(); //llamamos al metodo UpdateDataPlayer definido en player para actualizar los datos de guardado
 
         GameController.Instance.SaveGame();

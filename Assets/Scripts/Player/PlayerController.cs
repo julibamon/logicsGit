@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour
 
 
     //health y saveData
-    private int maxHealth;
-    private int currentHealth;
+    public int maxHealth;
+    public int currentHealth;
 
     private List<String> skillsList;
 
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //para que salga el numero de corazones segun la vida
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         float healthWidth = currentHealth * widthPerHealth;
 
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
             PlayerData PlayerData = GameController.Instance.currentSD.playerData;
 
             maxHealth=PlayerData.maxHealth;
-            currentHealth=PlayerData.currentHealth;
+            currentHealth=PlayerData.maxHealth; //para recuperar todos los corazones
             skillsList = PlayerData.skillsList;
 
         
