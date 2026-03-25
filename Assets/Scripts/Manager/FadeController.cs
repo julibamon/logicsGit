@@ -30,7 +30,7 @@ public class FadeController : MonoBehaviour
 
         if (fadeImage != null)
         {
-            SetAlpha(0f);
+            StartCoroutine(FadeIn());
         }
     }
 

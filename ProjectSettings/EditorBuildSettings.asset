@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bosque.unity
     guid: d0a34e3620611ad48bf086124ed916c5
+  - enabled: 1
+    path: Assets/Scenes/Root.unity
+    guid: fefba912af7f5ad4290e284d1fd31417
+  - enabled: 1
+    path: Assets/Scenes/Pueblo.unity
+    guid: 8e5b2504876155e478226ef36be48256
   m_configObjects: {}
