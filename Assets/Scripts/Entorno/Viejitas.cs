@@ -308,6 +308,7 @@ public class Viejitas : MonoBehaviour
         else
         {
             lineIndex = 10; //ya hemos entregado las 3
+            GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
         }
         
         StopAllCoroutines();
