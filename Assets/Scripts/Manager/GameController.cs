@@ -13,6 +13,14 @@ public class GameController : MonoBehaviour
 
     public PlayerData playerData;
 
+    //para cambiar entre escenas
+    public Vector2 nextSpawnPosition;
+    public bool useNextSpawn=false;
+
+    //para saber si flipear al personaje tras moverse entre escenas
+    public bool flipOnSpawn = false;
+
+
     
 
 
@@ -42,8 +50,8 @@ public class GameController : MonoBehaviour
         playerData = new PlayerData();
         playerData.maxHealth=5;
         playerData.currentHealth=5;
-        playerData.checkpointX=13.433f;
-        playerData.checkpointY=-1.444f;
+        playerData.checkpointX=-14.221f;
+        playerData.checkpointY=-2.241f;
         playerData.currentNameScene="SampleScene"; //escena inicial, SampleScene
 
         //datos inciales del mundo

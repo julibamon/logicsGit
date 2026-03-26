@@ -1,44 +1,45 @@
 using UnityEngine;
 
-public class Gramola : MonoBehaviour
+public class Coleccionables : MonoBehaviour
 
 {
-    public Animator animator;
     private bool isPlayerHere = false;
 
-    public GameObject canvas; //texto encima de la gramola
+    public GameObject canvas; //texto encima del comestible
 
     private PlayerController playerController;
 
+    public GameObject coleccionable;
+
+    public string nombreObjeto;
+
     void Start()
     {
-        animator = GetComponent<Animator>();
+        if (GameController.Instance.currentSD.worldData.itemsListW.Contains(nombreObjeto)) //desactivamos el coleccionable si ya lo tenemos
+        {
+            coleccionable.SetActive(false);
+
+        }
     }
 
     void Update()
     {
         if(isPlayerHere && Input.GetKeyDown(KeyCode.E))
         {
-            ActivateGramola();
+            GetColeccionable();
         }
     }
 
-    public void ActivateGramola()
+    public void GetColeccionable()
     {
-        animator.SetTrigger("Clicked");
 
-        //recuperar vida maxima
-        playerController.currentHealth=playerController.maxHealth;
-        playerController.UpdateHealthUI();
+        coleccionable.SetActive(false);
+        Debug.Log("Cogido el coleccionable"+ nombreObjeto);
+        GameController.Instance.currentSD.worldData.itemsListW.Add(nombreObjeto); // añadimos el coleccionable a la lista de objetos
 
-       playerController.UpdateDataPlayer(); //llamamos al metodo UpdateDataPlayer definido en player para actualizar los datos de guardado
-
-        GameController.Instance.SaveGame();
-
-        Debug.Log("Partida guardada en una gramola");
     }
 
-    //lógica de entrar en rango de la gramola y salir de él
+    //lógica de entrar en rango del objeto
 
     void OnTriggerEnter2D(Collider2D colliderPlayer)
     {

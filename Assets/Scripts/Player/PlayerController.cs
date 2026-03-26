@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,8 +40,8 @@ public class PlayerController : MonoBehaviour
 
 
     //health y saveData
-    private int maxHealth;
-    private int currentHealth;
+    public int maxHealth;
+    public int currentHealth;
 
     private List<String> skillsList;
 
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public GameObject DeathMenu;
 
 
+    
     void Awake()
     {
         rigidbody2 = GetComponent<Rigidbody2D>();
@@ -69,9 +72,19 @@ public class PlayerController : MonoBehaviour
     {
         jumpsLeft = extraJumps;
 
+        
        ApplySaveDataToPlayer();
        UpdateDataPlayer();
-       GameController.Instance.SaveGame();
+        if (GameController.Instance.useNextSpawn)// Si venimos de un TP, la posición la dicta nextSpawnPosition
+        {
+            transform.position = GameController.Instance.nextSpawnPosition;
+            GameController.Instance.useNextSpawn = false;
+
+            if (GameController.Instance.flipOnSpawn)
+            {
+                Flip();
+            }
+        }
 
     }
 
@@ -202,8 +215,18 @@ public class PlayerController : MonoBehaviour
         animator.Play("Idle");
     }
 
+    public void LookAtAlquimista()
+    {
+        if(!facingRight)
+        {
+            Flip(); //hacemos flip si estamos mirando a la izquierda
+           
+        }
+        animator.Play("Idle");
+    }
+
     //para que salga el numero de corazones segun la vida
-    void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         float healthWidth = currentHealth * widthPerHealth;
 
@@ -221,10 +244,12 @@ public class PlayerController : MonoBehaviour
             PlayerData PlayerData = GameController.Instance.currentSD.playerData;
 
             maxHealth=PlayerData.maxHealth;
-            currentHealth=PlayerData.currentHealth;
+            currentHealth=PlayerData.maxHealth; //para recuperar todos los corazones
             skillsList = PlayerData.skillsList;
-            transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY);
 
+        
+          
+                transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY); 
             UpdateHealthUI();
         }
     }
@@ -240,6 +265,7 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.currentSD.playerData.checkpointX = transform.position.x;
         GameController.Instance.currentSD.playerData.checkpointY = transform.position.y;
         GameController.Instance.currentSD.playerData.skillsList = skillsList;
+        GameController.Instance.currentSD.playerData.currentNameScene = SceneManager.GetActiveScene().name;
 
         Debug.Log("SaveData actualizado desde PlayerController");
     }

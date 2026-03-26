@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEditor.Search;
+using Unity.Collections;
 
 public class Viejitas : MonoBehaviour
 
@@ -10,8 +11,7 @@ public class Viejitas : MonoBehaviour
 
     private Animator animator;
 
-    public GameObject upCanvas; //texto encima del comestible
-
+    public GameObject upCanvas; //texto encima del npc
     public GameObject dialogueCanvas;
 
     private PlayerController playerController;
@@ -29,6 +29,7 @@ public class Viejitas : MonoBehaviour
     private bool isShowingOptions=false; //para cuando estamos mostrando "opciones"(botones) y no texto del inspector
 
     private bool playerIsGrounded;
+    private bool lineFinished; //cuadro de dialogo mostrado entero ya
 
     //floorPoints para reposicionar al player cuando esté en dialogo con las viejitas
     public GameObject floorPointLeft;
@@ -54,29 +55,18 @@ public class Viejitas : MonoBehaviour
 
     void Update()
     {
-        if(isPlayerHere && Input.GetKeyDown(KeyCode.E) && playerController.isGrounded) //tiene que estar en el suelo para poder interactuar
+        if(isPlayerHere && Input.GetKeyDown(KeyCode.E) && playerController.isGrounded && !isShowingOptions) //tiene que estar en el suelo para poder interactuar y que no salgan opciones
         {
             if (!isTalking) //si no está hablando la [E] empieza la conversacion
             {
                 StartCoroutine(MoveToTalkPoint());
-            } else if (dialogueText.text == dialogueArea[lineIndex]) //si ya hemos mostrado todos los caracteres de ese dialogo (la condicion coincide)
-            {                                                         //la [E] pasa al siguiente dialogo
-                NextDialogue(); //pasamos al siguiente dialogo
-
-            }
-            else //si aun no se han mostrado todos las frases del cuadro de dialogo, la [E] acelera el tipeo por si no quieres esperar
-            {
-                StopAllCoroutines();
-                dialogueText.text = dialogueArea[lineIndex]; //mostramos todos los caracteres que faltan
-            }
-            if (lineIndex == 6)
-            {
-                ShowOptions();
-            }
-           
+            } else {
+                HandleInput();
+            
+           }
         }
         //CONTROL ANIMACION VIEJITAS
-        if(isTalking && !isShowingOptions && lineIndex < dialogueArea.Length && dialogueText.text != dialogueArea[lineIndex]) //si estoy en dialogo y aun quedan cosas por decir
+        if(isTalking && !isShowingOptions && !lineFinished) //si estoy en dialogo y aun quedan cosas por decir
         {
             animator.SetBool("isTalking", true); //que salga animacion de hablar
         }
@@ -122,7 +112,12 @@ public class Viejitas : MonoBehaviour
     {
         dialogueCanvas.SetActive(true); //abrimos el canvas de dialogo
         upCanvas.SetActive(false);      //quitamos el mensaje encima de las viejas "Hablar [E]"
-        if (GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck")) //si ya conocemos a las viejitas
+        if (AllDelivered())
+        {
+            lineIndex=12;
+        }
+
+        else if (GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck")) //si ya conocemos a las viejitas
         {
             lineIndex=6; //empezamos el dialogo en index 6
         }
@@ -136,29 +131,70 @@ public class Viejitas : MonoBehaviour
 
     private void NextDialogue()
     {
-        lineIndex++; //incrementamos el index del dialogo
-        if (lineIndex < dialogueArea.Length) //si aún quedan lineas de dialogo por las que pasar, SEGUIMOS EN LA CONVERSACION
-        {
-            StartCoroutine(LinesCoroutine());
-        }
-        else //HEMOS TERMINADO LA CONVERSACION
-        {
-            isTalking = false; //dejamos de hablar si ya no quedan más lineas por decir
-            dialogueCanvas.SetActive(false); //desactivamos el panel
-            upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
-            playerController.isInDialogue=false;
-            lineIndex = 0;
-            if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck"))
-            {
-            GameController.Instance.currentSD.worldData.activatedEvents.Add("ViejitasCheck");
-            }
 
+        //VOLVER A OPCIONES TRAS ELEGIR CORRECTA O INCORRECTA (si no hemos entregado ya todas)
+        if(lineIndex==7 || lineIndex == 9)
+        {
+            lineIndex=6;
+            StartCoroutine(LinesCoroutine());
+            return;
         }
+        //NO TENEMOS NI IDEA, se cierra dialogo directamente, o ya hemos entregado todo y solo nos dicen "ja,ja"
+        if (lineIndex == 8 || (AllDelivered() && lineIndex == 12))
+        {
+            EndDialogue();
+            return;
+        }
+
+        lineIndex++;
+
+        StartCoroutine(LinesCoroutine());
+
+        
     }
+
+    //terminar dialogo
+    private void EndDialogue()
+    {
+        isTalking = false; //dejamos de hablar si ya no quedan más lineas por decir
+        dialogueCanvas.SetActive(false); //desactivamos el panel
+        upCanvas.SetActive(true); //para volver a mostrar el canvas de arriba
+        playerController.isInDialogue=false;
+        lineIndex = 0;
+        if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("ViejitasCheck"))
+            {
+                GameController.Instance.currentSD.worldData.activatedEvents.Add("ViejitasCheck");
+            }
+    }
+    private void HandleInput() //manejo inputs
+{
+    if (!Input.GetKeyDown(KeyCode.E)) {
+        return;
+        }
+
+    if (isShowingOptions) {
+        return;
+    }
+    if (!lineFinished)
+    {
+        StopAllCoroutines();
+        dialogueText.text = dialogueArea[lineIndex];
+        lineFinished = true;
+
+        if (lineIndex == 6 && !isShowingOptions && !AllDelivered())
+    {
+        ShowOptions();
+    }
+        return;
+    }
+
+    NextDialogue();
+}
 
     //corrutina para que se vaya escribiendo poco a poco el texto
     private IEnumerator LinesCoroutine()
-    {
+    {   
+        lineFinished=false;
         dialogueText.text = string.Empty; //para que empiece como string vacio
         
         foreach (char ch in dialogueArea[lineIndex]) //por cada linea de dialogo
@@ -166,6 +202,12 @@ public class Viejitas : MonoBehaviour
             dialogueText.text += ch; //concatenamos cada character uno por uno
             yield return new WaitForSeconds(typingTime); //tiempo que tarda en escribirse cada character
         }
+        lineFinished=true;
+        //que aparezcan las opciones
+        if (lineIndex == 6 && !isShowingOptions && !AllDelivered()) //que salgan las opciones abajo pero despues de que salga toda la pregunta
+            {
+                ShowOptions();
+            }
     }
 
     //lógica de entrar y salir del rango de las viejas
@@ -194,23 +236,112 @@ public class Viejitas : MonoBehaviour
      private void ShowOptions()
     {
     isShowingOptions=true;
-    //TOMATE
-    bool hasTomate = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaTomate");
-    tomatoCorrectButton.SetActive(hasTomate);
-    tomatoIncorrectButton.SetActive(!hasTomate);
+        //TOMATE
+        if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("TomateOK")) //si no he entregado todavia
+        {
+            bool hasTomate = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaTomate");
+            tomatoCorrectButton.SetActive(hasTomate);
+            tomatoIncorrectButton.SetActive(!hasTomate);
+        }
+        else //si ya he entregado, que no me salga la opcion
+        {
+            tomatoCorrectButton.SetActive(false);
+            tomatoIncorrectButton.SetActive(false);
+        }
+    
 
     //SAL
-    bool hasSal = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaSal");
-    saltCorrectButton.SetActive(hasSal);
-    saltIncorrectButton.SetActive(!hasSal);
-
+        if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("SaltOK")){ //si no he entregado todavia
+            bool hasSal = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaSal");
+            saltCorrectButton.SetActive(hasSal);
+            saltIncorrectButton.SetActive(!hasSal);
+            }
+            else
+            {
+            saltCorrectButton.SetActive(false);
+            saltIncorrectButton.SetActive(false);
+        }
     //ACEITE
-    bool hasAceite = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaAceite");
-    oilCorrectButton.SetActive(hasAceite);
-    oilIncorrectButton.SetActive(!hasAceite);
-
+        if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains("OilOK")){ //si no he entregado todavia
+            bool hasAceite = GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaAceite");
+            oilCorrectButton.SetActive(hasAceite);
+            oilIncorrectButton.SetActive(!hasAceite);
+        }
+        else
+        {
+            oilCorrectButton.SetActive(false);
+            oilIncorrectButton.SetActive(false);
+        }
     //SKIP
-    noIdeaButton.SetActive(true);
+    noIdeaButton.SetActive(!AllDelivered()); //depende de si se han entregado los 3 o no
     }
 
+    //desactivar las opciones
+    private void HideOptions()
+    {
+        tomatoCorrectButton.SetActive(false);
+        tomatoIncorrectButton.SetActive(false);
+        saltCorrectButton.SetActive(false);
+        saltIncorrectButton.SetActive(false);
+        oilCorrectButton.SetActive(false);
+        oilIncorrectButton.SetActive(false);
+        noIdeaButton.SetActive(false);
+    }
+
+    
+    
+    //CUANDO LE DAMOS A UNA OPCION CORRECTA
+    public void CorrectOption(string ingrediente)
+    {
+        isShowingOptions=false;
+        HideOptions();
+        string receta = ingrediente + "OK";
+        if (!GameController.Instance.currentSD.worldData.activatedEvents.Contains(receta))
+        {
+            GameController.Instance.currentSD.worldData.activatedEvents.Add(receta);
+        }
+
+        if (!AllDelivered()) //si no hemos entregado aun las tres
+        {
+            lineIndex = 9; //vamos a correcto normal
+        }
+        else
+        {
+            lineIndex = 10; //ya hemos entregado las 3
+            GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
+        }
+        
+        StopAllCoroutines();
+        StartCoroutine(LinesCoroutine());
+    }
+
+    //CUANDO LE DAMOS A UNA OPCION INCORRECTA
+    public void IncorrectOption()
+    {
+        isShowingOptions=false;
+        HideOptions();
+
+        lineIndex = 7; //vamos a incorrecto
+        StopAllCoroutines();
+        StartCoroutine(LinesCoroutine());
+    }
+
+    //CUANDO LE DAMOS A NO TENGO NI IDEA
+    public void NoIdeaOption()
+    {
+        isShowingOptions = false;
+        HideOptions();
+
+        lineIndex = 8; //vamos a "no tienes cara de saber hacer un gzp"
+        StopAllCoroutines();
+        StartCoroutine(LinesCoroutine());
+    }
+
+    //método que comprueba si hemos entregado todos los ingredientes
+    private bool AllDelivered()
+    {
+        var datos = GameController.Instance.currentSD.worldData.activatedEvents;
+
+        return datos.Contains("TomateOK") && datos.Contains("SaltOK") && datos.Contains("OilOK");
+    }
 }
