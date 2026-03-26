@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using UnityEditor.Search;
 using Unity.Collections;
+using Unity.VisualScripting;
 
 public class Alquimista : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Alquimista : MonoBehaviour
     public GameObject dialogueCanvas;
 
     private PlayerController playerController;
+
+    //puerta que se abre
+    public GameObject puerta;
 
     [SerializeField, TextArea(4,7)] private string[] dialogueArea; //lineas de dialogo del npc
     //TextArea(minimo,maximo) numero de lineas en el cuadro de texto
@@ -304,6 +308,8 @@ private void NextDialogue()
         }
 
         lineIndex = 4; //ya hemos entregado las 3
+        float posYPuerta = puerta.transform.position.y;
+        puerta.transform.position=new Vector3(puerta.transform.position.x,17.65f,puerta.transform.position.z);
         
         
         StopAllCoroutines();
