@@ -6,6 +6,7 @@ public class ChangeScene : MonoBehaviour
 {
     public string sceneToLoad; //escena a la que vamos a cambiar
     public Vector2 spawnPoint; //sitio en el que vamos a aparecer
+    public PlayerController player;
 
     public bool flipOnSpawn = false;
 
@@ -14,7 +15,7 @@ public class ChangeScene : MonoBehaviour
         if (collision.CompareTag("Player")){
             GameController.Instance.nextSpawnPosition = spawnPoint;
             GameController.Instance.useNextSpawn = true;
-
+            GameController.Instance.currentHealthTP = player.currentHealth; //aplico los puntos de vida al gamecontroller en una variable externa al player(da problemas el currentSD al caragr el player de nuevo)
             GameController.Instance.flipOnSpawn=flipOnSpawn;
             Debug.Log("Tocando el TP");
             StartCoroutine(Transition(sceneToLoad));

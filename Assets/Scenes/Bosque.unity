@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upCanvas: {fileID: 980628382}
   dialogueCanvas: {fileID: 1217345375}
+  puerta: {fileID: 0}
   dialogueArea:
   - "Pues no que he perdido la llave \xA1\xA1NO ME LO PUEDO CREER!! Con la de cosas
     que ten\xEDa que hacer yo y estoy aqu\xED sin poder entrar en mi casa, qu\xE9
@@ -201165,6 +201166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Root
   spawnPoint: {x: -56.937, y: 9.44}
+  currentHealthTP: 0
+  player: {fileID: 2429288788720500380}
   flipOnSpawn: 1
 --- !u!1 &1131827099
 GameObject:
@@ -205923,6 +205926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: SampleScene
   spawnPoint: {x: -14.42495, y: 4.796}
+  currentHealthTP: 0
+  player: {fileID: 2429288788720500380}
   flipOnSpawn: 1
 --- !u!1 &1862330355
 GameObject:
@@ -217977,6 +217982,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+--- !u!114 &2429288788720500380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8606568819744543231, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+  m_PrefabInstance: {fileID: 2429288788720500379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f283e0bcf9c54649ae318983ad076f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5821179062955785464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2408092038754259619, guid: 1684516d8b958764aa93fe7604656e47, type: 3}

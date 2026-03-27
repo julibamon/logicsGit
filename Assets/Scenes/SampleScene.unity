@@ -1715,6 +1715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Bosque
   spawnPoint: {x: -16.47495, y: 4.811}
+  currentHealthTP: 0
+  player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
 --- !u!61 &416019896
 BoxCollider2D:
@@ -5913,6 +5915,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+--- !u!114 &2429288788720500380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8606568819744543231, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+  m_PrefabInstance: {fileID: 2429288788720500379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f283e0bcf9c54649ae318983ad076f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2829703371764256872
 PrefabInstance:
   m_ObjectHideFlags: 0

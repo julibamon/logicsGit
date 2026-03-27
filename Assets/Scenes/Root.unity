@@ -198612,6 +198612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: Bosque
   spawnPoint: {x: -56.355, y: 9.438}
+  currentHealthTP: 0
+  player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
 --- !u!1 &1250813802
 GameObject:
@@ -211570,6 +211572,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2429288788720500380}
+    - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: flipOnSpawn
       value: 0
       objectReference: {fileID: 0}
@@ -211845,6 +211851,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+--- !u!114 &2429288788720500380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8606568819744543231, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+  m_PrefabInstance: {fileID: 2429288788720500379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f283e0bcf9c54649ae318983ad076f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3561371947327952718
 PrefabInstance:
   m_ObjectHideFlags: 0
