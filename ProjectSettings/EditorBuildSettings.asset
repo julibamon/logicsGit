@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pueblo.unity
     guid: 8e5b2504876155e478226ef36be48256
+  - enabled: 1
+    path: Assets/Scenes/Circus.unity
+    guid: 1dd862443fcc6fc498482c81b2c151e6
+  - enabled: 1
+    path: Assets/Scenes/Backstage.unity
+    guid: cd2a35356efe3b34a802921558207ff2
   m_configObjects: {}
