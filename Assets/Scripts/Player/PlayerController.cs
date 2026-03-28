@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     //MENU DE MUERTE
     public GameObject DeathMenu;
 
+    //plataforma móvil
+    private PlataformaMovil currentPlatform;
 
     
     void Awake()
@@ -166,7 +168,14 @@ public class PlayerController : MonoBehaviour
         if(isAttacking==false){
             //movimiento de desplazamiento del personaje
             float horizontalVelocity = movement.normalized.x * speed;
-            rigidbody2.velocity= new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
+            Vector2 finalVelocity= new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
+
+            //plataformas moviles
+            if(currentPlatform !=null && isGrounded) //si estoy encima de una plataforma movil
+            {
+                finalVelocity.x += currentPlatform.PlatformVelocity.x;
+            }
+            rigidbody2.velocity = finalVelocity;
         }
         
     }
@@ -353,6 +362,21 @@ public class PlayerController : MonoBehaviour
     public void SwordHitBoxOFF()
     {
         swordHitBox.SetActive(false);
+    }
+
+    //PLATAFORMAS MOVILES 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            currentPlatform = collision.gameObject.GetComponent<PlataformaMovil>();
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform")){
+            currentPlatform=null;
+        }
     }
 }
 
