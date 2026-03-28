@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     private List<String> skillsList;
 
+    private List<String> itemsList;
+
     public RectTransform healthBar; //RectTransform de los corazones llenos
     public RectTransform deadBar; //RectTransform de los corazones vacíos
     public float widthPerHealth = 18f; //para que la imagen tiled de los corazones se multiplique dinámicamente
@@ -73,17 +75,14 @@ public class PlayerController : MonoBehaviour
         jumpsLeft = extraJumps;
 
         
-       ApplySaveDataToPlayer();
-       UpdateDataPlayer();
         if (GameController.Instance.useNextSpawn)// Si venimos de un TP, la posición la dicta nextSpawnPosition
         {
-            transform.position = GameController.Instance.nextSpawnPosition;
-            GameController.Instance.useNextSpawn = false;
+            ApplySaveDataToPlayerWhenTP();
+        }
+        else //si no venimos del TP cargamos los datos de guardado
+        {
+                    ApplySaveDataToPlayer();
 
-            if (GameController.Instance.flipOnSpawn)
-            {
-                Flip();
-            }
         }
 
     }
@@ -244,8 +243,10 @@ public class PlayerController : MonoBehaviour
             PlayerData PlayerData = GameController.Instance.currentSD.playerData;
 
             maxHealth=PlayerData.maxHealth;
-            currentHealth=PlayerData.maxHealth; //para recuperar todos los corazones
+            currentHealth=PlayerData.currentHealth; //para recuperar todos los corazones
             skillsList = PlayerData.skillsList;
+            itemsList = PlayerData.itemsList;
+            
 
         
           
@@ -253,6 +254,33 @@ public class PlayerController : MonoBehaviour
             UpdateHealthUI();
         }
     }
+
+    //Dar los datos al player, pero no desde el savedata, para cuando venimos de un TP (cogemos los datos de currentSD)
+        public void ApplySaveDataToPlayerWhenTP()
+    {
+        if(GameController.Instance!=null && GameController.Instance.currentSD != null)
+        {
+           transform.position = GameController.Instance.nextSpawnPosition;
+            GameController.Instance.useNextSpawn = false;
+
+            Debug.Log("Teletransportandome tengo "+ GameController.Instance.currentHealthTP+" puntos de vida");
+            currentHealth = GameController.Instance.currentHealthTP;
+
+            
+
+            maxHealth = GameController.Instance.currentSD.playerData.maxHealth;
+            skillsList = GameController.Instance.currentSD.playerData.skillsList;
+            itemsList = GameController.Instance.currentSD.playerData.itemsList;
+
+        UpdateHealthUI();
+
+            if (GameController.Instance.flipOnSpawn)
+            {
+                Flip();
+            }
+        }
+    }
+
 
     //CAMBIAR LOS DATOS DEL PLAYER CUANDO QUERAMOS GUARDAR EN SAVEDATA
     public void UpdateDataPlayer()

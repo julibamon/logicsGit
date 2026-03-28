@@ -15,14 +15,13 @@ public class GameController : MonoBehaviour
 
     //para cambiar entre escenas
     public Vector2 nextSpawnPosition;
+    public int currentHealthTP;
     public bool useNextSpawn=false;
 
     //para saber si flipear al personaje tras moverse entre escenas
     public bool flipOnSpawn = false;
 
-
     
-
 
     private void Awake()
     {
