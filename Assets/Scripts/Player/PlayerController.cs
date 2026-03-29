@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer; //con esto checkeamos qué layer de la lista de layers es el suelo
     public float groundCheckRadius; //para ver cómo es de grande nuestro groundcheck
     public bool isGrounded;
+    //COYOTE TIME
+    public float coyoteTime=0.15f;
+    private float coyoteTimeCont;
+
+
+
     public bool isInDialogue = false; //para controlar si el player está en dialogo o no
 
     //attacking
@@ -119,6 +125,16 @@ public class PlayerController : MonoBehaviour
         //devuelve true si se encuentra más de una layer ( o una entiendo ) con la que esté interactuando
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,groundLayer);
 
+        //COYOTE TIME
+        if (isGrounded)
+        {
+            coyoteTimeCont = coyoteTime; //si aun estamos en el suelo tenemos el tiempo completo disponible
+        }
+        else
+        {
+            coyoteTimeCont -= Time.deltaTime; //si hemos salido del suelo vamos descontando
+        }
+
         //DOBLE SALTO, RESETEO AL TOCAR EL SUELO
         if (isGrounded)
         {
@@ -129,9 +145,10 @@ public class PlayerController : MonoBehaviour
          // SALTO Y DOBLE SALTO
         if(Input.GetButtonDown("Jump") && !isAttacking)
         {
-            if(isGrounded)
+            if(coyoteTimeCont >0f)
             {
                 rigidbody2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                coyoteTimeCont = 0f; //para evitar multiples altos
             }
             else if(jumpsLeft > 0 && skillsList.Contains("DoubleJump")) //si tenemos los saltos reiniciados y hemos cogido la habilidad
             {
