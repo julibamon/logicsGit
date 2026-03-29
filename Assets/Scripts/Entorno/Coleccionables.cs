@@ -36,6 +36,21 @@ public class Coleccionables : MonoBehaviour
         coleccionable.SetActive(false);
         Debug.Log("Cogido el coleccionable"+ nombreObjeto);
         GameController.Instance.currentSD.worldData.itemsListW.Add(nombreObjeto); // añadimos el coleccionable a la lista de objetos
+        if(nombreObjeto == "RecetaAceite")
+        {
+            MessageMenu.Instance.ShowMessage("...Ah... conque esa es la cantidad de aceite que habría que echarle a un buen gazpacho...");
+
+        } else if(nombreObjeto == "RecetaTomate")
+        {
+            MessageMenu.Instance.ShowMessage("...Ah... conque esa es la cantidad de tomate que habría que echarle a un buen gazpacho...");
+
+        }  else if(nombreObjeto == "HouseKEY")
+        {
+            MessageMenu.Instance.ShowMessage("...Vaya...¿Y estas llaves?...Alguien las habrá perdido");
+
+        }
+
+
 
     }
 
