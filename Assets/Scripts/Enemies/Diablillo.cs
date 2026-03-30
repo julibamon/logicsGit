@@ -26,6 +26,10 @@ public class Diablillo : MonoBehaviour
     public float detectionRange; //distancia a la que detecta el enemigo al player
     public float loseRange; //distancia a la que el enemigo deja de ver al player
     public float followSpeed; //velocidad al perseguir
+
+    //delay a la hora de girarse (para que no se gire en cada frame)
+    public float turnDelay = 0.3f;
+    private bool isTurning = false;
     private bool isFollowing=false;
 
     //cuánto daño hace este enemigo
@@ -92,7 +96,7 @@ public class Diablillo : MonoBehaviour
             }
        
             if(Physics2D.Raycast(transform.position, direction, wallAware, groundLayer)){
-                Flip();
+                TryTurn();
             }
         }
         }
@@ -101,6 +105,11 @@ public class Diablillo : MonoBehaviour
     }
         void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
+        if (isTurning)
+        {
+        rigidbody2.velocity = new Vector2(0, rigidbody2.velocity.y);
+         return;
+        }
         if (!isKnocked && !isDead) //para dejar de mover el enemigo si está knockeado (o muerto obviamente)
         {
             
@@ -115,10 +124,10 @@ public class Diablillo : MonoBehaviour
             horizontalVelocity= direction2Player*followSpeed;
             if(direction2Player>0 && !facingRight) //no debería ocurrir (está mirando al lado equivocado)
             {
-                Flip();
+                TryTurn();
             } else if(direction2Player <0 && facingRight) //también está mirando al lado equivocado, así que hacemos flip
             {
-                Flip();
+                TryTurn();
             }
 
     }else{
@@ -141,6 +150,24 @@ public class Diablillo : MonoBehaviour
         float localScaleX= transform.localScale.x;
         localScaleX = localScaleX * -1f; //para inventir el valor se multiplica por -1 (aqui es donde literalmente le damos la vuelta al pj)
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z); //aqui lo aplicamos
+    }
+    private void TryTurn()
+    {
+        if (!isTurning)
+        {
+        StartCoroutine(TurnAround());
+        }
+    }
+
+    private IEnumerator TurnAround()
+    {
+        isTurning = true;
+
+        yield return new WaitForSeconds(turnDelay);
+
+        Flip();
+
+        isTurning = false;
     }
 
     //RECIBIR DAÑO

@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1412269017247203955
 Transform:
   m_ObjectHideFlags: 0
@@ -147,8 +147,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.02}
-  m_Size: {x: 0.16, y: 0.35}
+  m_Offset: {x: -0.009999998, y: -0.020123824}
+  m_Size: {x: 0.16, y: 0.35024765}
   m_Direction: 0
 --- !u!95 &7799625977891560819
 Animator:
@@ -192,6 +192,7 @@ MonoBehaviour:
   detectionRange: 2
   loseRange: 4
   followSpeed: 1
+  turnDelay: 0.3
   cantDamage: 1
   maxHealth: 2
   currentHealth: 2
