@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Backstage.unity
     guid: cd2a35356efe3b34a802921558207ff2
+  - enabled: 1
+    path: Assets/Scenes/Clock.unity
+    guid: ff3cf4d5cef322c4bbf347f30583c6e3
   m_configObjects: {}
