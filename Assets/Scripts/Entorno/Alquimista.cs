@@ -257,7 +257,7 @@ private void NextDialogue()
             }
     }
 
-    //lógica de entrar y salir del rango de las viejas
+    //lógica de entrar y salir del rango del npc
 
     void OnTriggerEnter2D(Collider2D colliderPlayer)
     {
@@ -309,9 +309,7 @@ private void NextDialogue()
         }
 
         lineIndex = 4; //ya hemos entregado las 3
-        float posYPuerta = puerta.transform.position.y;
-        puerta.transform.position=new Vector3(puerta.transform.position.x,17.65f,puerta.transform.position.z);
-        
+        puerta.GetComponent<PuertaQuest>().OpenDoor();
         
         StopAllCoroutines();
         StartCoroutine(LinesCoroutine());
