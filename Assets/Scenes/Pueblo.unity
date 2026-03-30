@@ -198111,6 +198111,7 @@ GameObject:
   - component: {fileID: 554631407}
   - component: {fileID: 554631406}
   - component: {fileID: 554631408}
+  - component: {fileID: 554631409}
   m_Layer: 0
   m_Name: puerta2
   m_TagString: Untagged
@@ -198230,6 +198231,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.11, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &554631409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554631405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92480586acd928149a08d900f9223a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584734243
 GameObject:
   m_ObjectHideFlags: 0
