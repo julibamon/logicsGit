@@ -176,6 +176,7 @@ private void NextDialogue()
         if(lineIndex == 2) //cuando entra y le hablamos ("por las molestias")
         {
             GameController.Instance.currentSD.worldData.itemsListW.Add("RecetaSal"); // me da la receta
+            MessageMenu.Instance.ShowMessage("...Ah... conque esa es la cantidad de sal que habría que echarle a un buen gazpacho...");
             lineIndex++; //va al dialogo 3 ("tambien he perdido mi caldero")
             return;
             

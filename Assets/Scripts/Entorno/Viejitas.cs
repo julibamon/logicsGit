@@ -309,6 +309,7 @@ public class Viejitas : MonoBehaviour
         {
             lineIndex = 10; //ya hemos entregado las 3
             GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
+            MessageMenu.Instance.ShowMessage("** HAS RECIBIDO UNA OLLA **");
         }
         
         StopAllCoroutines();
