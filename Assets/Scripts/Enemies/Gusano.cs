@@ -36,7 +36,9 @@ public class Gusano : MonoBehaviour
     private bool isInvulnerable =false;
 
     //impulso hacia atras al recibir daño del jugador
-    public float pushBack = 20f; //fuerza de impulso hacia atras
+    public float pushBack = 4f; //fuerza de impulso hacia atras
+    private float maxKnockback = 4f;  //maximo impulso hacia atras al recibir daño
+
     private bool isKnocked = false; //está knockeado?
     private bool isDead=false; //está muerto? (var usada para la animacion de mueriendo)
 
@@ -74,8 +76,22 @@ public class Gusano : MonoBehaviour
         if(facingRight == false){
             direction=Vector2.left;        
             }
-       
+
+            //enemigo tiene una pared delante
             if(Physics2D.Raycast(transform.position, direction, wallAware, groundLayer)){
+                Flip();
+            }
+
+            //no caerse de las plataformas si no hay mas suelo
+            Vector2 front = Vector2.right;
+
+            if(facingRight == false){
+                front = Vector2.left;
+            }
+
+            RaycastHit2D groundAhead = Physics2D.Raycast(transform.position + (Vector3)front * 0.3f, Vector2.down, 1f, groundLayer);
+
+            if(!groundAhead){
                 Flip();
             }
         }
@@ -130,7 +146,17 @@ public class Gusano : MonoBehaviour
                 animator.SetTrigger("Die"); //LANZAR EL TRIGGER DE LA ANIMACIÓN
             } else{
             isKnocked = true; //para que deje de moverse en update, se quede quieto y entonces se eche para atrás tras recibir el golpe
-             rigidbody2.velocity = new Vector2(attackDirection.x * pushBack, rigidbody2.velocity.y); //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+             //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+            float knock = Mathf.Clamp(attackDirection.x * pushBack, -maxKnockback, maxKnockback);
+
+            //evitar empujar al enemigo contra mas alla de la pared invisible
+            Vector2 origin = (Vector2)transform.position + new Vector2(attackDirection.x * 0.25f, 0f);
+            if (Physics2D.Raycast(origin, new Vector2(attackDirection.x, 0), 0.2f, groundLayer))
+        {
+            knock = 0f;
+        }
+
+            rigidbody2.velocity = new Vector2(knock, rigidbody2.velocity.y);
             
              
             StartCoroutine(coroutinePushBack());

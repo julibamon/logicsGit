@@ -42,8 +42,8 @@ public class Diablillo : MonoBehaviour
     public float invulnerableTime = 0.3f; //menos que el player
     private bool isInvulnerable =false;
 
-    //impulso hacia atras al recibir daño del jugador
-    public float pushBack = 20f; //fuerza de impulso hacia atras
+    public float pushBack = 4f; //fuerza de impulso hacia atras
+    private float maxKnockback = 4f;  //maximo impulso hacia atras al recibir daño
     private bool isKnocked = false; //está knockeado?
     private bool isDead=false; //está muerto? (var usada para la animacion de mueriendo)
 
@@ -98,52 +98,96 @@ public class Diablillo : MonoBehaviour
             if(Physics2D.Raycast(transform.position, direction, wallAware, groundLayer)){
                 TryTurn();
             }
+
+            //no caerse de las plataformas si no hay mas suelo
+            Vector2 front = Vector2.right;
+
+            if(facingRight == false){
+                front = Vector2.left;
+            }
+
+            RaycastHit2D groundAhead = Physics2D.Raycast(transform.position + (Vector3)front * 0.3f, Vector2.down, 1f, groundLayer);
+
+            if(!groundAhead){
+                TryTurn();
+            }
         }
         }
         
         
     }
         void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
+{
+    if (isTurning)
     {
-        if (isTurning)
-        {
         rigidbody2.velocity = new Vector2(0, rigidbody2.velocity.y);
-         return;
-        }
-        if (!isKnocked && !isDead) //para dejar de mover el enemigo si está knockeado (o muerto obviamente)
-        {
-            
-        float horizontalVelocity;
+        return;
+    }
+
+    if (!isKnocked && !isDead) //para dejar de mover el enemigo si está knockeado (o muerto obviamente)
+    {
+        float horizontalVelocity = 0f;
 
         if (isFollowing == true)
         {
-            float direction2Player = Mathf.Sign(player.position.x-transform.position.x);
+            float direction2Player = Mathf.Sign(player.position.x - transform.position.x);
             //Mathf.Sign devuelve: 1-> si el player está a la dcha
-                                // -1-> si el player está a la izqda
-                                // 0-> si están en mismo punto
-            horizontalVelocity= direction2Player*followSpeed;
-            if(direction2Player>0 && !facingRight) //no debería ocurrir (está mirando al lado equivocado)
+            //                   -1-> si el player está a la izqda
+            //                    0-> si están en mismo punto
+
+            Vector2 front = Vector2.right;
+
+            if (direction2Player < 0)
             {
-                TryTurn();
-            } else if(direction2Player <0 && facingRight) //también está mirando al lado equivocado, así que hacemos flip
+                front = Vector2.left;
+            }
+
+            //diablillo detecta si hay suelo delante
+            RaycastHit2D groundAhead = Physics2D.Raycast(
+                transform.position + (Vector3)front * 0.1f, //offset del raycast
+                Vector2.down,
+                0.6f, //(distancia del raycast)
+                groundLayer
+            );
+            if (groundAhead && groundAhead.collider.CompareTag("Pinchos")) //si el suelo no es seguro (pinchos)
+                {
+                    groundAhead = new RaycastHit2D(); //se invalida como si no hubiera suelo al lado al que caminar 
+                }
+
+            if (!groundAhead)
+            {
+                horizontalVelocity = 0f; // no avanza si hay vacío
+            }
+            else
+            {
+                horizontalVelocity = direction2Player * followSpeed;
+            }
+
+            // girar si está mirando al lado contrario
+            if (direction2Player > 0 && !facingRight)
             {
                 TryTurn();
             }
-
-    }else{
+            else if (direction2Player < 0 && facingRight)
+            {
+                TryTurn();
+            }
+        }
+        else
+        {
             //si no está following
-        horizontalVelocity = speed;
-        if(facingRight==false){ //para que cambie el sentido de la velocidad
-            //movimiento de desplazamiento del personaje
-           horizontalVelocity = speed * -1f;
-           
-        }
-        
-    }
-     rigidbody2.velocity= new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
+            horizontalVelocity = speed;
 
+            if (facingRight == false) //para que cambie el sentido de la velocidad
+            {
+                //movimiento de desplazamiento del personaje
+                horizontalVelocity = speed * -1f;
+            }
         }
+
+        rigidbody2.velocity = new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
     }
+}
     
         private void Flip(){
         facingRight = !facingRight;
@@ -191,7 +235,17 @@ public class Diablillo : MonoBehaviour
                 animator.SetTrigger("Die"); //LANZAR EL TRIGGER DE LA ANIMACIÓN
             } else{
             isKnocked = true; //para que deje de moverse en update, se quede quieto y entonces se eche para atrás tras recibir el golpe
-             rigidbody2.velocity = new Vector2(attackDirection.x * pushBack, rigidbody2.velocity.y); //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+             //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+            float knock = Mathf.Clamp(attackDirection.x * pushBack, -maxKnockback, maxKnockback);
+
+            //evitar empujar al enemigo contra mas alla de la pared invisible
+            Vector2 origin = (Vector2)transform.position + new Vector2(attackDirection.x * 0.25f, 0f);
+            if (Physics2D.Raycast(origin, new Vector2(attackDirection.x, 0), 0.2f, groundLayer))
+        {
+            knock = 0f;
+        }
+
+            rigidbody2.velocity = new Vector2(knock, rigidbody2.velocity.y);
             
              
             StartCoroutine(coroutinePushBack());
