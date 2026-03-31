@@ -28,10 +28,10 @@ public int cantDamage;
 
             if(enemy1 != null)
             {
-                enemy1.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del player y le pasamos la cantidad de daño que hace este enemigo
+                enemy1.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del enemigo y le pasamos la cantidad de daño que hace este enemigo
             } if (enemy2 != null)
             {
-                enemy2.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del player y le pasamos la cantidad de daño que hace este enemigo
+                enemy2.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del enemigo y le pasamos la cantidad de daño que hace este enemigo
 
             }
         }

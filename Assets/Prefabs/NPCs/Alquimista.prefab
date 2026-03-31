@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upCanvas: {fileID: 5968862464501347979}
   dialogueCanvas: {fileID: 0}
+  puerta: {fileID: 0}
   dialogueArea:
   - "Pues no que he perdido la llave \xA1\xA1NO ME LO PUEDO CREER!! Con la de cosas
     que ten\xEDa que hacer yo y estoy aqu\xED sin poder entrar en mi casa, qu\xE9
@@ -425,7 +426,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5968862464501347979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

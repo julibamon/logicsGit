@@ -7,7 +7,6 @@ public class PuertaQuest : MonoBehaviour
     // Start is called before the first frame update
 
     private Vector3 closedPosition;
-    private bool isOpen = false;
     void Start()
     {
         closedPosition = transform.position;
@@ -26,7 +25,6 @@ public class PuertaQuest : MonoBehaviour
     public void OpenDoor()
     {
         transform.position=new Vector3(transform.position.x,17.65f,transform.position.z);
-        isOpen = true;
     }
 
 }
