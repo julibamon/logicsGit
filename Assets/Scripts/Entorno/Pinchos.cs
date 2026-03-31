@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 public class Pinchos : MonoBehaviour
@@ -9,12 +10,29 @@ public int cantDamage;
        //HACER DAÑO AL PLAYER AL COLISIONARLE
     private void OnCollisionStay2D(Collision2D coll) //usamos Stay y no Enter para no ser invulnerables para siempre si nos quedamos tocando al enemigo
     {
-        if (coll.gameObject.CompareTag("Player")) //establecemos que solo ocurra si estamos ante el player (tag player) y estamos vivos
+        if (coll.gameObject.CompareTag("Player") ) //establecemos que solo ocurra si estamos ante el player (tag player) y estamos vivos
         {
             PlayerController pj = coll.gameObject.GetComponent<PlayerController>();
+            Diablillo enemy1 = coll.gameObject.GetComponent<Diablillo>();
+            Gusano enemy2 = coll.gameObject.GetComponent<Gusano>();
+
             if(pj != null)
             {
                 pj.Damaged(cantDamage); //llamamos al metodo damaged del player y le pasamos la cantidad de daño que hace este enemigo
+            }
+        }
+        if (coll.gameObject.CompareTag("Enemy"))
+        {
+            Diablillo enemy1 = coll.gameObject.GetComponent<Diablillo>();
+            Gusano enemy2 = coll.gameObject.GetComponent<Gusano>();
+
+            if(enemy1 != null)
+            {
+                enemy1.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del player y le pasamos la cantidad de daño que hace este enemigo
+            } if (enemy2 != null)
+            {
+                enemy2.Damaged(cantDamage, Vector2.up); //llamamos al metodo damaged del player y le pasamos la cantidad de daño que hace este enemigo
+
             }
         }
     }

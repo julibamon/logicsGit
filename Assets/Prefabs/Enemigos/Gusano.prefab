@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5138095923159108771}
   m_Layer: 0
   m_Name: Gusano
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
     m_Bits: 256
   player: {fileID: 0}
   cantDamage: 1
-  maxHealth: 2
-  currentHealth: 2
+  maxHealth: 3
+  currentHealth: 3
   invulnerableTime: 0.3
   pushBack: 20
   timeToDieAnimation: 2

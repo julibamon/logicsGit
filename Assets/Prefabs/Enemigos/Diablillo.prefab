@@ -194,7 +194,7 @@ MonoBehaviour:
   followSpeed: 1
   turnDelay: 0.3
   cantDamage: 1
-  maxHealth: 2
-  currentHealth: 2
+  maxHealth: 4
+  currentHealth: 4
   invulnerableTime: 0.5
   pushBack: 2
