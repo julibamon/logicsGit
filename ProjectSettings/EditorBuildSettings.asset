@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clock.unity
     guid: ff3cf4d5cef322c4bbf347f30583c6e3
+  - enabled: 1
+    path: Assets/Scenes/Parkour.unity
+    guid: c440f856a747dc343b8524d1b45abaae
   m_configObjects: {}
