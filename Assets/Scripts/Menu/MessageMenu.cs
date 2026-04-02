@@ -8,7 +8,7 @@ public class MessageMenu : MonoBehaviour
 
     public GameObject panel; //el panel que vamos a activar/desactivar
     public TMP_Text msgText;
-    public float msgDuration = 5f;
+    public float msgDuration = 7f;
 
     private Coroutine currentCoroutine;
     

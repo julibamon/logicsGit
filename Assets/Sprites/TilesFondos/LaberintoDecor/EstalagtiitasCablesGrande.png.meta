@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 4b725741beaa6f640b8b9e619237a475
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 186
+        width: 31
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637119412f98fa94d8ea163701efb76a
+      internalID: 1402776973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 198
+        width: 35
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d83bd53cc6c80ac429f6747a61a77fb6
+      internalID: 832914529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_2
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 169
+        width: 20
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785fdc008bb116b4d935df8ddcbbe398
+      internalID: 1527617311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_3
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 169
+        width: 56
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617bb1ad964dc5643b9cca8cf605c565
+      internalID: -1335604553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 157
+        width: 80
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff23b11cbfa1d04eba7ffc35d01c45f
+      internalID: 368200080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 117
+        width: 79
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7e75deb21f4f194bad76ed3960af892
+      internalID: 747620074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_6
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 81
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81db66cd139042f49add04e6277e0cf2
+      internalID: 1026435294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 81
+        width: 112
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a647edb3ae3a4ad4287ffa56f7c2ee04
+      internalID: -808743395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 29
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2324bcde0825345939171405a6abbe
+      internalID: -873942506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_9
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 38
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e68a50bb0be0859418be359a4cb66707
+      internalID: -720724249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_10
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 31
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78ce7d4322a847d46b337e32ed247636
+      internalID: -1978368855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_11
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4365d32d5a001a4d88e81686927a7ce
+      internalID: 1637914540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_12
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 10
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 181ff1e7c07901645b27b1d9ce3dd5f7
+      internalID: -1779349452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_13
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 0
+        width: 16
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 166d26ca45e2ed74a8aa485293d94a45
+      internalID: 1599811482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 30
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112ad1fc4899714458a64dd6d7c61041
+      internalID: -18097283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_15
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 2
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39150fce82f5f3348a21981919800099
+      internalID: -1008866258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstalagtiitasCablesGrande_16
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 0
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491a4ed9973417f4c849adf03c78c7b1
+      internalID: -1338261358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      EstalagtiitasCablesGrande_0: 1402776973
+      EstalagtiitasCablesGrande_1: 832914529
+      EstalagtiitasCablesGrande_10: -1978368855
+      EstalagtiitasCablesGrande_11: 1637914540
+      EstalagtiitasCablesGrande_12: -1779349452
+      EstalagtiitasCablesGrande_13: 1599811482
+      EstalagtiitasCablesGrande_14: -18097283
+      EstalagtiitasCablesGrande_15: -1008866258
+      EstalagtiitasCablesGrande_16: -1338261358
+      EstalagtiitasCablesGrande_2: 1527617311
+      EstalagtiitasCablesGrande_3: -1335604553
+      EstalagtiitasCablesGrande_4: 368200080
+      EstalagtiitasCablesGrande_5: 747620074
+      EstalagtiitasCablesGrande_6: 1026435294
+      EstalagtiitasCablesGrande_7: -808743395
+      EstalagtiitasCablesGrande_8: -873942506
+      EstalagtiitasCablesGrande_9: -720724249
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
