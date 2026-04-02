@@ -153,7 +153,7 @@ public class Gusano : MonoBehaviour
             Vector2 origin = (Vector2)transform.position + new Vector2(attackDirection.x * 0.25f, 0f);
             if (Physics2D.Raycast(origin, new Vector2(attackDirection.x, 0), 0.2f, groundLayer))
         {
-            knock = 0f;
+            knock *= 0.3f;
         }
 
             rigidbody2.velocity = new Vector2(knock, rigidbody2.velocity.y);
