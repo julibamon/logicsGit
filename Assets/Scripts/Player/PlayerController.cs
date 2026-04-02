@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     //MENU DE MUERTE
     public GameObject DeathMenu;
+    public Transform canvasMessagePlayer; //los mensajes de ("has obtenido doble salto"), etc
 
     //plataforma móvil
     private PlataformaMovil currentPlatform;
@@ -227,6 +228,12 @@ public class PlayerController : MonoBehaviour
         float localScaleX= transform.localScale.x;
         localScaleX = localScaleX * -1f; //para inventir el valor se multiplica por -1 (aqui es donde literalmente le damos la vuelta al pj)
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z); //aqui lo aplicamos
+
+        //que no se gire el canvas de arriba del personaje (has obtenido doble salto)
+        float canvasScaleX = canvasMessagePlayer.localScale.x;
+        canvasScaleX = canvasScaleX * -1f;
+
+        canvasMessagePlayer.localScale = new Vector3(canvasScaleX, canvasMessagePlayer.localScale.y, canvasMessagePlayer.localScale.z);
     }
 
     //para hacer flip cuando estamos en un dialogo y mirar hacia el npc (metodo referenciado en los scripts de los npc)
