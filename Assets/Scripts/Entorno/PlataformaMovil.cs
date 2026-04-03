@@ -13,6 +13,19 @@ public class PlataformaMovil : MonoBehaviour
     public Vector2 PlatformVelocity { get; private set; }
     private Vector2 lastPos;
 
+    //variables para el tiempo parada en cada punto
+    private float waitTime;
+    private float waitCounter = 0f;
+    private bool isWaiting = false;
+
+    private bool hasArrived = false; //ha llegado mejor?
+
+
+
+    void Awake()
+    {
+        waitTime = 0.3f;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +34,18 @@ public class PlataformaMovil : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isWaiting)
+        {
+            waitCounter -= Time.fixedDeltaTime;
+            if (waitCounter <= 0f)
+            {
+                isWaiting = false;
+                index = (index + 1) % points.Length;
+
+            }
+            PlatformVelocity = Vector2.zero;
+            return;
+        }
         Transform target = points[index];
 
         Vector2 newPos = Vector2.MoveTowards(
@@ -34,9 +59,10 @@ public class PlataformaMovil : MonoBehaviour
         PlatformVelocity = (newPos - lastPos) / Time.fixedDeltaTime;
         lastPos = newPos;
 
-        if (Vector2.Distance(newPos, target.position) < 0.01f)
+        if (!isWaiting && Vector2.Distance(newPos, target.position) < 0.01f)
         {
-            index = (index + 1) % points.Length;
+            isWaiting = true;
+            waitCounter = waitTime;
         }
     }
 }
