@@ -8,4 +8,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 43a29de6379756f41aeee4ad216088bc
+  - enabled: 1
+    path: Assets/Scenes/Bosque.unity
+    guid: d0a34e3620611ad48bf086124ed916c5
+  - enabled: 1
+    path: Assets/Scenes/Root.unity
+    guid: fefba912af7f5ad4290e284d1fd31417
+  - enabled: 1
+    path: Assets/Scenes/Pueblo.unity
+    guid: 8e5b2504876155e478226ef36be48256
+  - enabled: 1
+    path: Assets/Scenes/Circus.unity
+    guid: 1dd862443fcc6fc498482c81b2c151e6
+  - enabled: 1
+    path: Assets/Scenes/Backstage.unity
+    guid: cd2a35356efe3b34a802921558207ff2
+  - enabled: 1
+    path: Assets/Scenes/Clock.unity
+    guid: ff3cf4d5cef322c4bbf347f30583c6e3
+  - enabled: 1
+    path: Assets/Scenes/Parkour.unity
+    guid: c440f856a747dc343b8524d1b45abaae
   m_configObjects: {}

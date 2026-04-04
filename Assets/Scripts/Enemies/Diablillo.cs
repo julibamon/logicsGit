@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Diablillo : MonoBehaviour
@@ -13,6 +14,9 @@ public class Diablillo : MonoBehaviour
     private Rigidbody2D rigidbody2;
     private Animator animator;
     private Vector2 movement;
+    private Collider2D enemyCollider;
+
+
     private bool facingRight;
 
 
@@ -22,6 +26,10 @@ public class Diablillo : MonoBehaviour
     public float detectionRange; //distancia a la que detecta el enemigo al player
     public float loseRange; //distancia a la que el enemigo deja de ver al player
     public float followSpeed; //velocidad al perseguir
+
+    //delay a la hora de girarse (para que no se gire en cada frame)
+    public float turnDelay = 0.3f;
+    private bool isTurning = false;
     private bool isFollowing=false;
 
     //cuánto daño hace este enemigo
@@ -34,9 +42,10 @@ public class Diablillo : MonoBehaviour
     public float invulnerableTime = 0.3f; //menos que el player
     private bool isInvulnerable =false;
 
-    //impulso hacia atras al recibir daño del jugador
-    public float pushBack = 20f; //fuerza de impulso hacia atras
+    public float pushBack = 4f; //fuerza de impulso hacia atras
+    private float maxKnockback = 4f;  //maximo impulso hacia atras al recibir daño
     private bool isKnocked = false; //está knockeado?
+    private bool isDead=false; //está muerto? (var usada para la animacion de mueriendo)
 
 
     void Awake()
@@ -44,6 +53,7 @@ public class Diablillo : MonoBehaviour
         rigidbody2 = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyCollider = GetComponent<Collider2D>();
     }
     // Start is called before the first frame update
     void Start()
@@ -62,6 +72,7 @@ public class Diablillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDead == false){
         //AQUI LA LÓGICA SERÍA, si está persiguiendo el enemigo al player, que persiga aún chocándose con la pared
         //si no está persiguiendo, que haga flip cada vez que el raycast detecte la pared
 
@@ -85,48 +96,98 @@ public class Diablillo : MonoBehaviour
             }
        
             if(Physics2D.Raycast(transform.position, direction, wallAware, groundLayer)){
-                Flip();
+                TryTurn();
             }
+
+            //no caerse de las plataformas si no hay mas suelo
+            Vector2 front = Vector2.right;
+
+            if(facingRight == false){
+                front = Vector2.left;
+            }
+
+            RaycastHit2D groundAhead = Physics2D.Raycast(transform.position + (Vector3)front * 0.3f, Vector2.down, 1f, groundLayer);
+
+            if(!groundAhead){
+                TryTurn();
+            }
+        }
         }
         
         
     }
         void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
+{
+    if (isTurning)
     {
-        if (!isKnocked) //para dejar de mover el enemigo si está knockeado
-        {
-            
-        float horizontalVelocity;
+        rigidbody2.velocity = new Vector2(0, rigidbody2.velocity.y);
+        return;
+    }
+
+    if (!isKnocked && !isDead) //para dejar de mover el enemigo si está knockeado (o muerto obviamente)
+    {
+        float horizontalVelocity = 0f;
 
         if (isFollowing == true)
         {
-            float direction2Player = Mathf.Sign(player.position.x-transform.position.x);
+            float direction2Player = Mathf.Sign(player.position.x - transform.position.x);
             //Mathf.Sign devuelve: 1-> si el player está a la dcha
-                                // -1-> si el player está a la izqda
-                                // 0-> si están en mismo punto
-            horizontalVelocity= direction2Player*followSpeed;
-            if(direction2Player>0 && !facingRight) //no debería ocurrir (está mirando al lado equivocado)
+            //                   -1-> si el player está a la izqda
+            //                    0-> si están en mismo punto
+
+            Vector2 front = Vector2.right;
+
+            if (direction2Player < 0)
             {
-                Flip();
-            } else if(direction2Player <0 && facingRight) //también está mirando al lado equivocado, así que hacemos flip
-            {
-                Flip();
+                front = Vector2.left;
             }
 
-    }else{
-            //si no está following
-        horizontalVelocity = speed;
-        if(facingRight==false){ //para que cambie el sentido de la velocidad
-            //movimiento de desplazamiento del personaje
-           horizontalVelocity = speed * -1f;
-           
-        }
-        
-    }
-     rigidbody2.velocity= new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
+            //diablillo detecta si hay suelo delante
+            RaycastHit2D groundAhead = Physics2D.Raycast(
+                transform.position + (Vector3)front * 0.1f, //offset del raycast
+                Vector2.down,
+                0.6f, //(distancia del raycast)
+                groundLayer
+            );
+            if (groundAhead && groundAhead.collider.CompareTag("Pinchos")) //si el suelo no es seguro (pinchos)
+                {
+                    groundAhead = new RaycastHit2D(); //se invalida como si no hubiera suelo al lado al que caminar 
+                }
 
+            if (!groundAhead)
+            {
+                horizontalVelocity = 0f; // no avanza si hay vacío
+            }
+            else
+            {
+                horizontalVelocity = direction2Player * followSpeed;
+            }
+
+            // girar si está mirando al lado contrario
+            if (direction2Player > 0 && !facingRight)
+            {
+                TryTurn();
+            }
+            else if (direction2Player < 0 && facingRight)
+            {
+                TryTurn();
+            }
         }
+        else
+        {
+            //si no está following
+            horizontalVelocity = speed;
+
+            if (facingRight == false) //para que cambie el sentido de la velocidad
+            {
+                //movimiento de desplazamiento del personaje
+                horizontalVelocity = speed * -1f;
+            }
+        }
+
+        rigidbody2.velocity = new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
     }
+}
     
         private void Flip(){
         facingRight = !facingRight;
@@ -134,25 +195,62 @@ public class Diablillo : MonoBehaviour
         localScaleX = localScaleX * -1f; //para inventir el valor se multiplica por -1 (aqui es donde literalmente le damos la vuelta al pj)
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z); //aqui lo aplicamos
     }
+    private void TryTurn()
+    {
+        if (!isTurning)
+        {
+        StartCoroutine(TurnAround());
+        }
+    }
+
+    private IEnumerator TurnAround()
+    {
+        isTurning = true;
+
+        yield return new WaitForSeconds(turnDelay);
+
+        Flip();
+
+        isTurning = false;
+    }
 
     //RECIBIR DAÑO
        public void Damaged(int cant, Vector2 attackDirection) //RECIBIR DAÑO
     {
-        if (!isInvulnerable) //podemos recibir daño
+        if (!isInvulnerable && !isDead) //podemos recibir daño
         {
             currentHealth = currentHealth - cant; //según el daño que nos quita el player
 
             if (currentHealth <= 0) //para no quedarnos con valores negativos de vida
             {
                 currentHealth = 0;
-                gameObject.SetActive(false);
-            }
+                isDead=true;
+                rigidbody2.velocity=Vector2.zero; // que deje de moverse el enemigo
+                rigidbody2.bodyType = RigidbodyType2D.Kinematic; //que el collider no interfiera el paso cuando el enemigo está muerto
+                GetComponent<Collider2D>().isTrigger=true; //convertir el collider en trigger
+                isFollowing=false; //no seguir al player
+                isKnocked=false; //no hacer daño al player
+                
+
+                animator.SetTrigger("Die"); //LANZAR EL TRIGGER DE LA ANIMACIÓN
+            } else{
             isKnocked = true; //para que deje de moverse en update, se quede quieto y entonces se eche para atrás tras recibir el golpe
-             rigidbody2.velocity = new Vector2(attackDirection.x * pushBack, rigidbody2.velocity.y); //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+             //el enemigo se echa para atrás pero sin flipear aunque se mueva en dir opuesta
+            float knock = Mathf.Clamp(attackDirection.x * pushBack, -maxKnockback, maxKnockback);
+
+            //evitar empujar al enemigo contra mas alla de la pared invisible
+            Vector2 origin = (Vector2)transform.position + new Vector2(attackDirection.x * 0.25f, 0f);
+            if (Physics2D.Raycast(origin, new Vector2(attackDirection.x, 0), 0.2f, groundLayer))
+        {
+            knock *= 0.3f;
+        }
+
+            rigidbody2.velocity = new Vector2(knock, rigidbody2.velocity.y);
             
              
             StartCoroutine(coroutinePushBack());
             StartCoroutine(coroutineInvulnerable()); //empieza tiempo de invulnerabilidad
+        }
         }
     }
 
@@ -181,7 +279,7 @@ public class Diablillo : MonoBehaviour
     //HACER DAÑO AL PLAYER AL COLISIONARLE
     private void OnCollisionStay2D(Collision2D coll) //usamos Stay y no Enter para no ser invulnerables para siempre si nos quedamos tocando al enemigo
     {
-        if (coll.gameObject.CompareTag("Player")) //establecemos que solo ocurra si estamos ante el player (tag player)
+        if (coll.gameObject.CompareTag("Player") && !isDead) //establecemos que solo ocurra si estamos ante el player (tag player) y estamos vivos
         {
             PlayerController pj = coll.gameObject.GetComponent<PlayerController>();
             if(pj != null)
@@ -202,5 +300,11 @@ public class Diablillo : MonoBehaviour
 
         }
     }
+
+    //MORIR (DESACTIVARSE)
+    public void DieAndDisable()
+{
+    gameObject.SetActive(false);
+}
 
 }
