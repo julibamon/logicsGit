@@ -48,9 +48,16 @@ public class Viejitas : MonoBehaviour
 
     public GameObject noIdeaButton;
 
+    //caldero
+    public GameObject caldero;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
+        if (GameController.Instance.currentSD.worldData.itemsListW.Contains("Caldero"))
+        {
+            caldero.SetActive(false);
+        }
     }
 
     void Update()
@@ -309,6 +316,8 @@ public class Viejitas : MonoBehaviour
         {
             lineIndex = 10; //ya hemos entregado las 3
             GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
+            caldero.SetActive(false); //desactivamos el caldero visualmente 
+
             MessageMenu.Instance.ShowMessage("** HAS RECIBIDO UNA OLLA **");
         }
         
