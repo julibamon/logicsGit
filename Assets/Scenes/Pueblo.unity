@@ -207655,7 +207655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Root
-  spawnPoint: {x: -55.824, y: 17.117}
+  spawnPoint: {x: -56.978, y: 17.13}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 1
 --- !u!1 &1862330355

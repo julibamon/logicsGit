@@ -274,11 +274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6957545479035305930, guid: 7d08794fc12079446acb3f026943270a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -71.394
+      value: -70.705
       objectReference: {fileID: 0}
     - target: {fileID: 6957545479035305930, guid: 7d08794fc12079446acb3f026943270a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.564
+      value: 10.394
       objectReference: {fileID: 0}
     - target: {fileID: 6957545479035305930, guid: 7d08794fc12079446acb3f026943270a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -207905,9 +207905,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Root
-  spawnPoint: {x: -68.598, y: 11.22}
+  spawnPoint: {x: -67.199, y: 11.199}
   player: {fileID: 2429288788720500380}
-  flipOnSpawn: 1
+  flipOnSpawn: 0
 --- !u!1 &1257434630
 GameObject:
   m_ObjectHideFlags: 0
