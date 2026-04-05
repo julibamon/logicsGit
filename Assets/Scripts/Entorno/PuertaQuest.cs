@@ -24,7 +24,7 @@ public class PuertaQuest : MonoBehaviour
 
     public void OpenDoor()
     {
-        transform.position=new Vector3(transform.position.x,17.65f,transform.position.z);
+        transform.position=new Vector3(transform.position.x,17.897f,transform.position.z);
     }
 
 }
