@@ -111,7 +111,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 759467999, guid: f9fae5bbd6badd64b970b6664417d533, type: 3}
+  m_Sprite: {fileID: 2121028502, guid: 7322f77568434344eac75816326fd270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,6 +164,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheckRadius: 0.025
+  isGrounded: 0
+  coyoteTime: 0.15
+  isInDialogue: 0
   swordHitBox: {fileID: 7455976381129460905}
   playerDamage: 1
   maxHealth: 10
@@ -171,6 +174,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   deadBar: {fileID: 0}
   widthPerHealth: 18
+  DeathMenu: {fileID: 0}
+  canvasMessagePlayer: {fileID: 0}
 --- !u!50 &3545107206949665280
 Rigidbody2D:
   serializedVersion: 4
