@@ -3045,6 +3045,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 8140870923681818225}
+  iconoDobleSalto: {fileID: 2560722814404051373}
+  iconoReceta1: {fileID: 6232580975941923093}
+  iconoReceta2: {fileID: 2741351219802243710}
+  iconoReceta3: {fileID: 6541985882311193797}
+  iconoCaldero: {fileID: 1806655936843311665}
+  iconoKeys: {fileID: 6828009229966784036}
 --- !u!1 &8242062154826836954
 GameObject:
   m_ObjectHideFlags: 0

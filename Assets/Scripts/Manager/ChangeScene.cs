@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public string sceneToLoad; //escena a la que vamos a cambiar
-    public Vector2 spawnPoint; //sitio en el que vamos a aparecer
+    public Vector3 spawnPoint; //sitio en el que vamos a aparecer
     public PlayerController player;
 
     public bool flipOnSpawn = false;
