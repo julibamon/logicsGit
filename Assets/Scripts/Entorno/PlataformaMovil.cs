@@ -18,8 +18,6 @@ public class PlataformaMovil : MonoBehaviour
     private float waitCounter = 0f;
     private bool isWaiting = false;
 
-    private bool hasArrived = false; //ha llegado mejor?
-
 
 
     void Awake()

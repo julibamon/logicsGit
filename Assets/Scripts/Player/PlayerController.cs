@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
 
         
           
-                transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY); 
+                transform.position = new Vector3(PlayerData.checkpointX,PlayerData.checkpointY,-1.46f); 
             UpdateHealthUI();
         }
     }
@@ -293,7 +293,7 @@ public class PlayerController : MonoBehaviour
     {
         if(GameController.Instance!=null && GameController.Instance.currentSD != null)
         {
-           transform.position = GameController.Instance.nextSpawnPosition;
+           transform.position = new Vector3(GameController.Instance.nextSpawnPosition.x, GameController.Instance.nextSpawnPosition.y, -1.46f);
             GameController.Instance.useNextSpawn = false;
 
             Debug.Log("Teletransportandome tengo "+ GameController.Instance.currentHealthTP+" puntos de vida");
