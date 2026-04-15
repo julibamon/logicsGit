@@ -402,5 +402,11 @@ public class PlayerController : MonoBehaviour
             currentPlatform=null;
         }
     }
+
+    //para reproducir los sonidos del player
+    public void PlaySounds(string soundName)
+    {
+        SoundEffectManager.Instance.Play(soundName);
+    }
 }
 
