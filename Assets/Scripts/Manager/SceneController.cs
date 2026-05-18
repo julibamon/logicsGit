@@ -11,13 +11,13 @@ public PauseMenu pauseMenu;
 
     void Update()
     {
-         if(Input.GetKeyDown(KeyCode.Escape))
+         if(Input.GetKeyDown(KeyCode.Escape)) //si estamos cerrando el menu de pausa
         {
             if (pauseMenu.menu.activeSelf)
             {
                 pauseMenu.Resume();
             }
-            else
+            else //si estamos abriendo el menu de pausa
             {
                 pauseMenu.Pause();
             }
