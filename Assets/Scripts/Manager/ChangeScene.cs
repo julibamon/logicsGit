@@ -9,7 +9,7 @@ public class ChangeScene : MonoBehaviour
     public PlayerController player;
 
     public bool flipOnSpawn = false;
-
+    public bool preserveMusic = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")){
@@ -17,7 +17,10 @@ public class ChangeScene : MonoBehaviour
             GameController.Instance.useNextSpawn = true;
             GameController.Instance.currentHealthTP = player.currentHealth; //aplico los puntos de vida al gamecontroller en una variable externa al player(da problemas el currentSD al caragr el player de nuevo)
             GameController.Instance.flipOnSpawn=flipOnSpawn;
-            Debug.Log("Tocando el TP");
+            if (MusicManager.Instance != null)
+            {
+                MusicManager.Instance.SetPreserveMusic(preserveMusic);
+            }
             StartCoroutine(Transition(sceneToLoad));
         }
 

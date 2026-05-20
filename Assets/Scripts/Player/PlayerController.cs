@@ -378,6 +378,10 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0f; //se pausa el juego
         DeathMenu.SetActive(true); //se despliega el menú
+        if (MusicManager.Instance != null)
+    {
+        MusicManager.Instance.SetDeathFilter(true);
+    }
     }
 
     private IEnumerator coroutineInvulnerable()

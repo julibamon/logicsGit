@@ -198470,6 +198470,51 @@ PrefabInstance:
       addedObject: {fileID: 1893505398}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ddcb852943357439661c90abd24fd9, type: 3}
+--- !u!1 &157965257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157965259}
+  - component: {fileID: 157965258}
+  m_Layer: 0
+  m_Name: SceneMusicData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &157965258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157965257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6662ce0515535b14bb36fbf0315e5c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClip: {fileID: 0}
+--- !u!4 &157965259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157965257}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.221, y: -2.0809999, z: -1.46}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &192535335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199002,6 +199047,10 @@ PrefabInstance:
     - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: spawnPoint.y
       value: 13.642
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
+      propertyPath: preserveMusic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3171440142681741011, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -206153,6 +206202,10 @@ PrefabInstance:
       propertyPath: spawnPoint.y
       value: 13.642
       objectReference: {fileID: 0}
+    - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
+      propertyPath: preserveMusic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3171440142681741011, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -53.601
@@ -206355,6 +206408,10 @@ PrefabInstance:
     - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: spawnPoint.y
       value: 13.642
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
+      propertyPath: preserveMusic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3171440142681741011, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207086,6 +207143,7 @@ MonoBehaviour:
   spawnPoint: {x: -68.618, y: 13.642, z: 0}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
+  preserveMusic: 1
 --- !u!1 &1196786598
 GameObject:
   m_ObjectHideFlags: 0
@@ -207264,6 +207322,7 @@ MonoBehaviour:
   spawnPoint: {x: -67.199, y: 11.199, z: 0}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
+  preserveMusic: 0
 --- !u!1 &1287071143
 GameObject:
   m_ObjectHideFlags: 0
@@ -417098,6 +417157,7 @@ MonoBehaviour:
   spawnPoint: {x: -35.98, y: 13.642, z: 0}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
+  preserveMusic: 1
 --- !u!1 &2024548270
 GameObject:
   m_ObjectHideFlags: 0
@@ -418720,6 +418780,7 @@ MonoBehaviour:
   spawnPoint: {x: -52.62, y: 13.642, z: 0}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 0
+  preserveMusic: 1
 --- !u!1 &2138470624
 GameObject:
   m_ObjectHideFlags: 0
@@ -418831,6 +418892,10 @@ PrefabInstance:
     - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: spawnPoint.y
       value: 13.642
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304721016964795165, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
+      propertyPath: preserveMusic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3171440142681741011, guid: 106a449b6bf0adf4998b2afd63d65a0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -419392,3 +419457,4 @@ SceneRoots:
   - {fileID: 7898087230199630412}
   - {fileID: 1838213767}
   - {fileID: 1466453992}
+  - {fileID: 157965259}

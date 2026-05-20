@@ -14,6 +14,13 @@ public class DeathMenu : MonoBehaviour
     public void GoToMenu()
     {
         Time.timeScale = 1f;
+        //parar la musica al ir al menu principal
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.SetPreserveMusic(false);
+            MusicManager.Instance.PlaySceneMusic(null);
+            MusicManager.Instance.SetDeathFilter(false);
+        }
         SceneManager.LoadScene("Menu");
     }
 

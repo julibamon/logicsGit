@@ -116,6 +116,10 @@ public void SlotSelectorPlayOrLoad(int slotId)
             NewGame(slotId); //NO EXISTE LA PARTIDA EN EL SLOT SELECCIONADO
             Debug.Log($"No existía el slot {slotId} seleccionado desde el menú, por eso creamos una partida nueva");
         }
+        if (MusicManager.Instance != null) //musica
+        {
+            MusicManager.Instance.SetPreserveMusic(false);
+        }
         
         SceneManager.LoadScene(playerData.currentNameScene); //cargamos la escena correpondiente
     }
