@@ -152,6 +152,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0f);
                 rigidbody2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                AnimSoundNo("Jump"); //sonido jump
                 coyoteTimeCont = 0f; //para evitar multiples altos
                 jumpLockCont = coyoteTime;
             }
@@ -415,9 +416,29 @@ public class PlayerController : MonoBehaviour
     }
 
     //para reproducir los sonidos del player
+
+    //pitch random true
+    public void PlaySoundsPitch(string soundName)
+    {
+        SoundEffectManager.Instance.Play(soundName, true);
+    }
+
+    //pitch random false
     public void PlaySounds(string soundName)
     {
-        SoundEffectManager.Instance.Play(soundName);
+        SoundEffectManager.Instance.Play(soundName, false);
+        
     }
+
+    //sonido ambiental (pasos) con pitch cambiado
+    public void AnimSound(string soundName)
+{
+    SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, true);
+}
+
+    public void AnimSoundNo(string soundName)
+{
+    SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, false);
+}
 }
 

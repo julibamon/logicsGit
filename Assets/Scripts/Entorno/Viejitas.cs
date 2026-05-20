@@ -131,6 +131,14 @@ public class Viejitas : MonoBehaviour
         {
             lineIndex=0; //empezamos desde el principio
         }
+        if (AllDelivered()) //para decidir si el audio es solo "ja,ja" o todo lo demas
+        {
+            PlayDialogue("ViejitasRisa");
+        }
+        else
+        {
+            PlayDialogue("ViejitasVoice");
+        }
         StartCoroutine(LinesCoroutine()); //llamamos a la corrutina
 
     }
@@ -142,6 +150,7 @@ public class Viejitas : MonoBehaviour
         if(lineIndex==7 || lineIndex == 9)
         {
             lineIndex=6;
+            PlayDialogue("ViejitasVoice");
             StartCoroutine(LinesCoroutine());
             return;
         }
@@ -153,7 +162,7 @@ public class Viejitas : MonoBehaviour
         }
 
         lineIndex++;
-
+        PlayDialogue("ViejitasVoice");
         StartCoroutine(LinesCoroutine());
 
         
@@ -321,6 +330,7 @@ public class Viejitas : MonoBehaviour
         }
         
         StopAllCoroutines();
+        PlayDialogue("ViejitasVoice");
         StartCoroutine(LinesCoroutine());
     }
 
@@ -332,6 +342,7 @@ public class Viejitas : MonoBehaviour
 
         lineIndex = 7; //vamos a incorrecto
         StopAllCoroutines();
+        PlayDialogue("ViejitasVoice");
         StartCoroutine(LinesCoroutine());
     }
 
@@ -343,6 +354,7 @@ public class Viejitas : MonoBehaviour
 
         lineIndex = 8; //vamos a "no tienes cara de saber hacer un gzp"
         StopAllCoroutines();
+        PlayDialogue("ViejitasVoice");
         StartCoroutine(LinesCoroutine());
     }
 
@@ -353,4 +365,10 @@ public class Viejitas : MonoBehaviour
 
         return datos.Contains("TomateOK") && datos.Contains("SaltOK") && datos.Contains("OilOK");
     }
+
+
+    //sonido dialogos viejitas
+    public void PlayDialogue(string soundName) { 
+        SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
 }

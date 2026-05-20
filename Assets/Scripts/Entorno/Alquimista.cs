@@ -81,10 +81,12 @@ public class Alquimista : MonoBehaviour
         if(isTalking && !isShowingOptions && !lineFinished) //si estoy en dialogo y aun quedan cosas por decir
         {
             animator.SetBool("isTalking", true); //que salga animacion de hablar
+            
         }
         else
         {
             animator.SetBool("isTalking", false); //que vuelva a idle
+
         }
     }
 
@@ -143,12 +145,16 @@ public class Alquimista : MonoBehaviour
         {
             lineIndex = 0; //dialogo inicial inicial (esta fuera y no hemos encontrado la llave)
         }
+
+        PlayDialogue("AlquimistaVoice");
         StartCoroutine(LinesCoroutine()); //llamamos a la corrutina
 
     }
 
 private void NextDialogue()
     {
+
+        
 
         //NO TENEMOS NADA QUE DARLE,no tenemos la llave, o porque ya se ha completado la quest
         if ((lineIndex == 0 && !GameController.Instance.currentSD.worldData.itemsListW.Contains("HouseKEY"))  || lineIndex == 4)
@@ -159,6 +165,7 @@ private void NextDialogue()
         if(lineIndex == 0 && GameController.Instance.currentSD.worldData.itemsListW.Contains("HouseKEY")) //momento en el que le damos la llave
         {
             lineIndex++;
+            PlayDialogue("AlquimistaVoice");
             StartCoroutine(LinesCoroutine()); //hacemos esto para que pueda salir el siguiente dialogo
             return;
         }
@@ -181,7 +188,7 @@ private void NextDialogue()
             
         }
         
-
+        PlayDialogue("AlquimistaVoice");
         StartCoroutine(LinesCoroutine());
 
         
@@ -322,5 +329,10 @@ private void NextDialogue()
         StopAllCoroutines();
         EndDialogue();
     }
+
+    //sonido en primer plano
+    public void PlayDialogue(string soundName) { 
+        SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
 
 }

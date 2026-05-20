@@ -148,6 +148,48 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 0dddc19b23a93e4429f2175d0940d842, type: 3}
     - {fileID: 8300000, guid: 75efd7eefdec1684198c980f8c9dcb28, type: 3}
     - {fileID: 8300000, guid: e6ead15b25e5158488bf2b2034b56037, type: 3}
+  - name: HitGusano
+    audioClips:
+    - {fileID: 8300000, guid: f7e717c94e5215e48a7fd55c1aca1124, type: 3}
+  - name: WalkGusano
+    audioClips:
+    - {fileID: 8300000, guid: de28e30ba42747844b1c4f83a0fd2f0b, type: 3}
+  - name: DieGusano
+    audioClips:
+    - {fileID: 8300000, guid: 4eea27d36f82e744bae9646c0fa9393f, type: 3}
+  - name: AlquimistaVoice
+    audioClips:
+    - {fileID: 8300000, guid: 52929ae5b60a35c4085d42b8da9eede5, type: 3}
+    - {fileID: 8300000, guid: e09ac141d978e92429a86b1a20412136, type: 3}
+    - {fileID: 8300000, guid: a7a0f0e862aef4a459c69f9a9385aab2, type: 3}
+  - name: EstebanVoice
+    audioClips:
+    - {fileID: 8300000, guid: 9bc6988f28ea05041be8db15182db19f, type: 3}
+    - {fileID: 8300000, guid: eadfab60be1796d48a612195f52e81e8, type: 3}
+    - {fileID: 8300000, guid: 5393101d4a3df5648b224dec42702e2b, type: 3}
+    - {fileID: 8300000, guid: bd9941b068fdc074ba6b2b9e87335490, type: 3}
+    - {fileID: 8300000, guid: d2e354f1453251c40a64f108ef73ceb8, type: 3}
+    - {fileID: 8300000, guid: bf6aabca5b026004293a195cac5d3907, type: 3}
+  - name: ViejitasVoice
+    audioClips:
+    - {fileID: 8300000, guid: 6431003aed7e3b748a4dbccad5e7a36c, type: 3}
+    - {fileID: 8300000, guid: 79bf7deca86fb5945b786906e0e4c446, type: 3}
+    - {fileID: 8300000, guid: f1f486402d316874da3334b4d2991391, type: 3}
+    - {fileID: 8300000, guid: 83a162ca74a5d8d478d4755472453119, type: 3}
+    - {fileID: 8300000, guid: 6cd5a69ac43b07747a9e47b2e783028f, type: 3}
+    - {fileID: 8300000, guid: 8f55e80fae0576d4f8b6811f3eb7e242, type: 3}
+  - name: ViejitasRisa
+    audioClips:
+    - {fileID: 8300000, guid: 7b7ff8fab5329a447b3825018bf5f93e, type: 3}
+  - name: DiablilloWalk
+    audioClips:
+    - {fileID: 8300000, guid: c2de6df1247435e41b69609dfc1d2eb9, type: 3}
+  - name: DiablilloHit
+    audioClips:
+    - {fileID: 8300000, guid: b6dc33f6f950df24e879651a9c0b22b6, type: 3}
+  - name: DiablilloDie
+    audioClips:
+    - {fileID: 8300000, guid: 417dcb15d040ae948a188f58b9848420, type: 3}
 --- !u!114 &615228631812586725
 MonoBehaviour:
   m_ObjectHideFlags: 0
