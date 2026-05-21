@@ -198,14 +198,14 @@ public class PlayerController : MonoBehaviour
             if(currentPlatform !=null && isGrounded) //si estoy encima de una plataforma movil
             {
                 finalVelocity.x += currentPlatform.PlatformVelocity.x;
-                rigidbody2.sharedMaterial.friction = 5f;
+                //rigidbody2.sharedMaterial.friction = 5f;
             } else
             {
-                rigidbody2.sharedMaterial.friction = 0.0f;
+                //rigidbody2.sharedMaterial.friction = 0.0f;
 
             }
             rigidbody2.velocity = finalVelocity;
-            Debug.Log(currentPlatform);
+            
         }
         
     }
