@@ -190,6 +190,18 @@ MonoBehaviour:
   - name: DiablilloDie
     audioClips:
     - {fileID: 8300000, guid: 417dcb15d040ae948a188f58b9848420, type: 3}
+  - name: ArbustoCaer
+    audioClips:
+    - {fileID: 8300000, guid: 8d2f0e3bf9fe7ab40ac526b5842c55cc, type: 3}
+  - name: HojasCaer
+    audioClips:
+    - {fileID: 8300000, guid: b1bd6995a282a7240b7b1569afc2d9aa, type: 3}
+  - name: ArbustoRomperse
+    audioClips:
+    - {fileID: 8300000, guid: bc3918ff9cd0baa4fb68395fe3b990a2, type: 3}
+  - name: ArbustoRecompon
+    audioClips:
+    - {fileID: 8300000, guid: 951e5e7b7f6f3dc4a9ca6c9010d7c3fd, type: 3}
 --- !u!114 &615228631812586725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,4 +214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb6663164d3c7f49b28c0c9ee9affdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSlider: {fileID: 0}
+  SFXMixer: {fileID: 0}

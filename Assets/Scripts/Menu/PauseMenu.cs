@@ -15,12 +15,18 @@ public GameObject iconoCaldero;
 
 public GameObject iconoKeys;
 
+public Slider musicSlider;
+public Slider sfxSlider;
+
 
 //estos metodos se referencian  desde el update del scenecontroller, porque un update aqui empezaria desactivado asi que nunca se ejecutaria
 public void Pause()
 {
     Time.timeScale = 0f;
     menu.SetActive(true);
+    //musicSlider.SetValueWithoutNotify(AudioSettingsManager.Instance.musicVolume);
+
+    //sfxSlider.SetValueWithoutNotify(AudioSettingsManager.Instance.sfxVolume);
 
         //iconos de habilidades objetos:
 
@@ -53,6 +59,7 @@ public void Resume() //funcionalidad para el botón reanudar
 {
     Time.timeScale=1f; //retomamos la actividad del juego tras pausarla en el método Pause()
     menu.SetActive(false);
+
 }
 
 public void GoToMenu()

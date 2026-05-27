@@ -13,6 +13,9 @@ public class MusicManager : MonoBehaviour
     private bool preserveMusicOnNextLoad = false;
     public AudioMixer mainMixer;
 
+
+    
+
     void Awake()
     {
         if (Instance == null)
@@ -22,12 +25,27 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             audioSource = GetComponent<AudioSource>();
+
+
+            //SetVolume();
+          
+
+
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+    //CAMBIOS
+    void Start()
+        {
+            //En start se pone el volumen del audio, que lo recoge de AudioSettingsManager, que mantiene el valor del volumen entre escenas
+            SetVolume(AudioSettingsManager.Instance.musicVolume);
+        }
+
+
 
     //metodo llamado por los TP para dejar la misma musica o no segun booleano
     public void SetPreserveMusic(bool preserve)
@@ -57,7 +75,16 @@ public class MusicManager : MonoBehaviour
 
         audioSource.Stop();
         audioSource.clip = newClip;
+        //SetVolume();
+
+
+        if (AudioSettingsManager.Instance != null)
+            {
+                SetVolume(AudioSettingsManager.Instance.musicVolume);
+            }
         audioSource.Play();
+
+
 
         preserveMusicOnNextLoad = false;
     }   
@@ -81,4 +108,29 @@ public void SetGameplayState()
 {
     SetDeathFilter(false);
 }
+
+//cambiar volumen musica
+/* public void SetVolume()
+    {
+        if (AudioSettingsManager.Instance == null) return;
+
+        audioSource.volume = Mathf.Clamp01(AudioSettingsManager.Instance.musicVolume);
+    }*/
+
+ // Prueba control volumen
+
+
+        //Método para controlar el volumen del mixer de audio
+    public void SetVolume(float volume)
+    {
+        
+
+        if (AudioSettingsManager.Instance != null)
+        {
+            AudioSettingsManager.Instance.musicVolume = volume;
+        }
+        float mixerVolume = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
+
+            mainMixer.SetFloat("MusicVolume", mixerVolume);
+    }
 }
