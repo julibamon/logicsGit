@@ -376,6 +376,7 @@ public class PlayerController : MonoBehaviour
     //método morir
     private void Die()
     {
+        PlaySounds("Death");
         Time.timeScale = 0f; //se pausa el juego
         DeathMenu.SetActive(true); //se despliega el menú
         if (MusicManager.Instance != null)

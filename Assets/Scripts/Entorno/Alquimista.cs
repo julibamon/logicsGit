@@ -182,6 +182,7 @@ private void NextDialogue()
         if(lineIndex == 2) //cuando entra y le hablamos ("por las molestias")
         {
             GameController.Instance.currentSD.worldData.itemsListW.Add("RecetaSal"); // me da la receta
+            Play("Object");
             MessageMenu.Instance.ShowMessage("...Ah... conque esa es la cantidad de sal que habría que echarle a un buen gazpacho...");
             lineIndex++; //va al dialogo 3 ("tambien he perdido mi caldero")
             return;
@@ -330,9 +331,14 @@ private void NextDialogue()
         EndDialogue();
     }
 
-    //sonido en primer plano
+    //sonido en primer plano (dialogue para que no se superpongan)
     public void PlayDialogue(string soundName) { 
         SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
+
+
+    public void Play(string soundName) { 
+        SoundEffectManager.Instance.Play(soundName, false);
      } 
 
 }

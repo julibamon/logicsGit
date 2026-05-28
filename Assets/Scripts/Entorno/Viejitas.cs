@@ -324,8 +324,9 @@ public class Viejitas : MonoBehaviour
         {
             lineIndex = 10; //ya hemos entregado las 3
             GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
+            
             caldero.SetActive(false); //desactivamos el caldero visualmente 
-
+            Play("Object");
             MessageMenu.Instance.ShowMessage("** HAS RECIBIDO UNA OLLA **");
         }
         
@@ -370,5 +371,10 @@ public class Viejitas : MonoBehaviour
     //sonido dialogos viejitas
     public void PlayDialogue(string soundName) { 
         SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
+
+
+    public void Play(string soundName) { 
+        SoundEffectManager.Instance.Play(soundName, false);
      } 
 }
