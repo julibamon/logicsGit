@@ -15,9 +15,6 @@ public class Alquimista : MonoBehaviour
 
     private PlayerController playerController;
 
-    //puerta que se abre
-    public GameObject puerta;
-
     [SerializeField, TextArea(4,7)] private string[] dialogueArea; //lineas de dialogo del npc
     //TextArea(minimo,maximo) numero de lineas en el cuadro de texto
 
@@ -42,10 +39,6 @@ public class Alquimista : MonoBehaviour
     //COLLIDERS
     public BoxCollider2D colliderOUT;
     public BoxCollider2D colliderIN;
-
-    //botones de las opciones
-    public GameObject giveCalderoButton;
-    public GameObject noIdeaButton;
 
     void Awake()
     {
@@ -124,13 +117,13 @@ public class Alquimista : MonoBehaviour
     public void StartDialogue()
     {
         dialogueCanvas.SetActive(true); //abrimos el canvas de dialogo
-        upCanvas.SetActive(false);      //quitamos el mensaje encima del NPC "Hablar [E]"
-        if (GameController.Instance.currentSD.worldData.activatedEvents.Contains("AlquimistaCALDERO"))
+        upCanvas.SetActive(false);     //quitamos el mensaje encima del NPC "Hablar [E]"
+/*         if (GameController.Instance.currentSD.worldData.activatedEvents.Contains("AlquimistaCALDERO"))
         {
             lineIndex=4;
-        }
+        } */
 
-        else if (GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaSal")) //si ya me ha dado la receta
+        if (GameController.Instance.currentSD.worldData.itemsListW.Contains("RecetaSal")) //si ya me ha dado la receta
         {
             lineIndex=3; //empezamos el dialogo en index 3
         }
@@ -157,7 +150,7 @@ private void NextDialogue()
         
 
         //NO TENEMOS NADA QUE DARLE,no tenemos la llave, o porque ya se ha completado la quest
-        if ((lineIndex == 0 && !GameController.Instance.currentSD.worldData.itemsListW.Contains("HouseKEY"))  || lineIndex == 4)
+        if ((lineIndex == 0 && !GameController.Instance.currentSD.worldData.itemsListW.Contains("HouseKEY"))  || lineIndex == 3)
         {
             EndDialogue();
             return;
@@ -235,11 +228,11 @@ private void NextDialogue()
         StopAllCoroutines();
         dialogueText.text = dialogueArea[lineIndex];
         lineFinished = true;
-
+/* 
         if (lineIndex == 3 && !isShowingOptions && !GameController.Instance.currentSD.worldData.activatedEvents.Contains("AlquimistaCALDERO"))
     {
         ShowOptions();
-    }
+    } */
         return;
     }
 
@@ -257,11 +250,11 @@ private void NextDialogue()
             yield return new WaitForSeconds(typingTime); //tiempo que tarda en escribirse cada character
         }
         lineFinished=true;
-        //que aparezcan las opciones
+/*         //que aparezcan las opciones
         if (lineIndex == 3 && !isShowingOptions && !GameController.Instance.currentSD.worldData.activatedEvents.Contains("AlquimistaCALDERO")) //que salgan las opciones abajo pero despues de que salga toda la pregunta
             {
                 ShowOptions();
-            }
+            } */
     }
 
     //lógica de entrar y salir del rango del npc
@@ -286,7 +279,7 @@ private void NextDialogue()
         }
     }
 
-    //para entregar o no el caldero
+/*     //para entregar o no el caldero
      private void ShowOptions()
     {
     isShowingOptions=true;
@@ -298,9 +291,9 @@ private void NextDialogue()
        
     //SKIP
     noIdeaButton.SetActive(!GameController.Instance.currentSD.worldData.activatedEvents.Contains("AlquimistaCALDERO")); //depende de si se han entregado los 3 o no
-    }
+    } */
 
-    private void HideOptions()
+/*     private void HideOptions()
     {
         giveCalderoButton.SetActive(false);
         noIdeaButton.SetActive(false);
@@ -315,9 +308,7 @@ private void NextDialogue()
             GameController.Instance.currentSD.worldData.activatedEvents.Add("AlquimistaCALDERO");
         }
 
-        lineIndex = 4; //ya hemos entregado las 3
-        puerta.GetComponent<PuertaQuest>().OpenDoor();
-        
+        lineIndex = 4; //ya hemos entregado las 3        
         StopAllCoroutines();
         StartCoroutine(LinesCoroutine());
     }
@@ -329,7 +320,7 @@ private void NextDialogue()
         HideOptions();
         StopAllCoroutines();
         EndDialogue();
-    }
+    } */
 
     //sonido en primer plano (dialogue para que no se superpongan)
     public void PlayDialogue(string soundName) { 

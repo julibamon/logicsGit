@@ -199463,7 +199463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Pueblo
-  spawnPoint: {x: -46.404, y: 17.127, z: 0}
+  spawnPoint: {x: -48.621, y: 17.127, z: 0}
   player: {fileID: 2429288788720500380}
   flipOnSpawn: 1
   preserveMusic: 0

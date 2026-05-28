@@ -47,16 +47,10 @@ public class Viejitas : MonoBehaviour
 
     public GameObject noIdeaButton;
 
-    //caldero
-    public GameObject caldero;
-
     void Awake()
     {
         animator = GetComponent<Animator>();
-        if (GameController.Instance.currentSD.worldData.itemsListW.Contains("Caldero"))
-        {
-            caldero.SetActive(false);
-        }
+
     }
 
     void Update()
@@ -323,11 +317,10 @@ public class Viejitas : MonoBehaviour
         else
         {
             lineIndex = 10; //ya hemos entregado las 3
-            GameController.Instance.currentSD.worldData.itemsListW.Add("Caldero");//te entregan el caldero
+            GameController.Instance.currentSD.worldData.itemsListW.Add("MariKey");//te entregan las llaves de Mari
             
-            caldero.SetActive(false); //desactivamos el caldero visualmente 
             Play("Object");
-            MessageMenu.Instance.ShowMessage("** HAS RECIBIDO UNA OLLA **");
+            MessageMenu.Instance.ShowMessage("Vaya... una llave antigua");
         }
         
         StopAllCoroutines();
