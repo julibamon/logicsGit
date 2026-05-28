@@ -682,8 +682,6 @@ MonoBehaviour:
   floorPointIN: {fileID: 584734243}
   colliderOUT: {fileID: 40843710}
   colliderIN: {fileID: 40843709}
-  giveCalderoButton: {fileID: 1283507538}
-  noIdeaButton: {fileID: 1252743853}
 --- !u!95 &40843712
 Animator:
   serializedVersion: 5
@@ -967,7 +965,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77139986}
   - component: {fileID: 77139987}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201528,7 +201526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218137119}
   - component: {fileID: 218137120}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203102,7 +203100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416990751}
   - component: {fileID: 416990752}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211606,7 +211604,7 @@ GameObject:
   m_Component:
   - component: {fileID: 628137277}
   - component: {fileID: 628137278}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213547,7 +213545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 753531903}
   - component: {fileID: 753531904}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371824,6 +371822,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 5138095923159108771, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8843134675245033718, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.464695
@@ -372332,7 +372334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1104481198}
   - component: {fileID: 1104481199}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374857,11 +374859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1252743853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3474727072112777599, guid: de02a8b3eafc8d2449def4ca7ca08a72, type: 3}
-  m_PrefabInstance: {fileID: 1252743850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1252883229
 GameObject:
   m_ObjectHideFlags: 0
@@ -375519,7 +375516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1276211057}
   - component: {fileID: 1276211058}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375956,11 +375953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1283507538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3474727072112777599, guid: de02a8b3eafc8d2449def4ca7ca08a72, type: 3}
-  m_PrefabInstance: {fileID: 1283507535}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287333804
 GameObject:
   m_ObjectHideFlags: 0
@@ -377685,6 +377677,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 5138095923159108771, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8843134675245033718, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.451603
@@ -379568,6 +379564,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 2256258666982430893, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8786834110991786673, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
       propertyPath: m_Name
       value: Diablillo (3)
@@ -387164,7 +387164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738426939}
   - component: {fileID: 1738426940}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389650,7 +389650,6 @@ MonoBehaviour:
   oilIncorrectButton: {fileID: 471304120}
   oilCorrectButton: {fileID: 1221470431}
   noIdeaButton: {fileID: 764263719}
-  caldero: {fileID: 0}
 --- !u!95 &1771315914
 Animator:
   serializedVersion: 5
@@ -389808,6 +389807,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 2256258666982430893, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8786834110991786673, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
       propertyPath: m_Name
       value: Diablillo (1)
@@ -390414,6 +390417,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 2256258666982430893, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8786834110991786673, guid: ba286c0e547e08b41bd6bc7bcd07acaf, type: 3}
       propertyPath: m_Name
       value: Diablillo (2)
@@ -392708,6 +392715,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 5821179062955785464}
+    - target: {fileID: 5138095923159108771, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 8843134675245033718, guid: 0d9e01e1a1c30ed49b10ecde16007b16, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.57801056
@@ -400617,7 +400628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041947473}
   - component: {fileID: 2041947474}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Barrera (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

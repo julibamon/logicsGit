@@ -7317,7 +7317,7 @@ PrefabInstance:
       objectReference: {fileID: 1304533525}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.size
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[11].name
@@ -7381,7 +7381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[26].name
-      value: GramolaClick
+      value: Select
       objectReference: {fileID: 0}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[27].name
@@ -7510,7 +7510,7 @@ PrefabInstance:
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[12].audioClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: bda64a155a9172c4cbccf5c0f4ebb7a4, type: 3}
+      objectReference: {fileID: 8300000, guid: c1b4d863243489544a067641994b010d, type: 3}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[13].audioClips.Array.data[0]
       value: 
@@ -7570,7 +7570,7 @@ PrefabInstance:
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[26].audioClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: dee0ce5ee53431a4189a0b5696119049, type: 3}
+      objectReference: {fileID: 8300000, guid: cae65738da2e9084b8000a3089cec911, type: 3}
     - target: {fileID: 1894690198852827715, guid: db0cdb2d338ce0c4fad28fb17b1b3de6, type: 3}
       propertyPath: soundEffectGroups.Array.data[27].audioClips.Array.data[0]
       value: 
