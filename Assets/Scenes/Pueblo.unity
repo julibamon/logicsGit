@@ -196703,7 +196703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3827261891577155055, guid: f7a21799c1b20c8479eb5f77f165a87f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -341.91992
+      value: -341.6599
       objectReference: {fileID: 0}
     - target: {fileID: 3827261891577155055, guid: f7a21799c1b20c8479eb5f77f165a87f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -197167,11 +197167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535700634303093567, guid: f7a21799c1b20c8479eb5f77f165a87f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -341.92114
+      value: -341.66113
       objectReference: {fileID: 0}
     - target: {fileID: 8535700634303093567, guid: f7a21799c1b20c8479eb5f77f165a87f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -94.48568
+      value: -94.48506
       objectReference: {fileID: 0}
     - target: {fileID: 8535700634303093567, guid: f7a21799c1b20c8479eb5f77f165a87f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -198288,7 +198288,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.034139633, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198299,7 +198299,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23757935, y: 0.48875237}
+  m_Size: {x: 0.16930008, y: 0.48875237}
   m_EdgeRadius: 0
 --- !u!114 &554631409
 MonoBehaviour:
@@ -199547,9 +199547,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Creditos
-  spawnPoint: {x: -64.5, y: 10.65, z: 0}
+  spawnPoint: {x: -65.65, y: 9.98, z: 0}
   player: {fileID: 2429288788720500380}
-  flipOnSpawn: 1
+  flipOnSpawn: 0
   preserveMusic: 0
 --- !u!1 &993419510
 GameObject:
@@ -225422,7 +225422,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2408092038754259619, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49.5
+      value: -49.24
       objectReference: {fileID: 0}
     - target: {fileID: 2408092038754259619, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -225460,9 +225460,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3773770342559520262, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5048871717477464562, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067657534068105362, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 8606568819744543231, guid: 1684516d8b958764aa93fe7604656e47, type: 3}
       propertyPath: deadBar
