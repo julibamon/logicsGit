@@ -646,8 +646,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 488, y: 56.63257}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: 488, y: 56.633}
+  m_SizeDelta: {x: 36.6978, y: 40.6534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5825570979684141368
 CanvasRenderer:
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2079042769, guid: 9d72b58daec5d1048998857a090f220a, type: 3}
+  m_Sprite: {fileID: 1486080714, guid: bc1f3ae694d438048bd15fba1413d427, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3195,7 +3195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[Click Izq rat\xF3n] o [crtl] "
+  m_text: "[Click Izq rat\xF3n] o [X] "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d94b41efb9d434d40b149f2ecd4fe7ad, type: 2}
   m_sharedMaterial: {fileID: 4071358994226230802, guid: d94b41efb9d434d40b149f2ecd4fe7ad, type: 2}

@@ -267,7 +267,6 @@ public class Diablillo : MonoBehaviour
      //ENEMIGO QUIETO PARA RECIBIR EMPUJÓN
     private IEnumerator coroutinePushBack()
     {
-        PlaySounds("EspadaHit");
         spriteRenderer.color = new Color(0.4279091f, 0.3737985f, 0.4528302f, 1f); //para que parpadee hacia este color al recibir daño (mientras es empujado)
         PlaySoundsPitch("DiablilloHit");
         yield return new WaitForSeconds(0.2f); //esperamos un tiempo quietos para echarnos para atrás tras recibir empujón

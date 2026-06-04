@@ -332,4 +332,8 @@ private void NextDialogue()
         SoundEffectManager.Instance.Play(soundName, false);
      } 
 
+    public void PlayPitch(string soundName) { 
+        SoundEffectManager.Instance.Play(soundName, true);
+     } 
+
 }

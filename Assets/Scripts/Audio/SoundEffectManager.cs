@@ -44,7 +44,7 @@ public class SoundEffectManager : MonoBehaviour
         {
             if (randomPitch)
             {
-                audioSource.pitch = Random.Range(0.7f, 1.01f);
+                audioSource.pitch = Random.Range(0.9f, 1.25f);
             }
             audioSource.PlayOneShot(audioClip);
         }
@@ -62,7 +62,7 @@ public class SoundEffectManager : MonoBehaviour
 
             if (randomPitch)
             {
-                audioSource.pitch = Random.Range(0.7f, 1.01f);
+                audioSource.pitch = Random.Range(0.9f, 1.25f);
             }
             else
             {
@@ -102,7 +102,7 @@ public class SoundEffectManager : MonoBehaviour
     source.volume = volume;
 
     if (randomPitch)
-        source.pitch = Random.Range(0.7f, 1.01f);
+        source.pitch = Random.Range(0.9f, 1.25f);
 
     source.Play();
 

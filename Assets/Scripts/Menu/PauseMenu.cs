@@ -15,8 +15,6 @@ public GameObject iconoCaldero;
 
 public GameObject iconoKeys;
 
-public Slider musicSlider;
-public Slider sfxSlider;
 
 
 //estos metodos se referencian  desde el update del scenecontroller, porque un update aqui empezaria desactivado asi que nunca se ejecutaria
@@ -42,7 +40,7 @@ public void Pause()
         {
             iconoReceta3.SetActive(true);
         }
-        if (GameController.Instance.currentSD.worldData.itemsListW.Contains("Caldero"))
+        if (GameController.Instance.currentSD.worldData.itemsListW.Contains("MariKey"))
         {
             iconoCaldero.SetActive(true);
         }
