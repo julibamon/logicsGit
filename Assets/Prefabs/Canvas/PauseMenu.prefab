@@ -3017,7 +3017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2168140910168466321
 Transform:
   m_ObjectHideFlags: 0
@@ -3053,8 +3053,6 @@ MonoBehaviour:
   iconoReceta3: {fileID: 6541985882311193797}
   iconoCaldero: {fileID: 1806655936843311665}
   iconoKeys: {fileID: 6828009229966784036}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
 --- !u!1 &8242062154826836954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4489,15 +4487,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430929436264846, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4159430929436264846, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4159430929436264846, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4159430929436264846, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4515,29 +4513,33 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.0000019073486
       objectReference: {fileID: 0}
+    - target: {fileID: 4396138048663336644, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -522266651, guid: 7d7d990347c55984d9ec71be3fc6aa23, type: 3}
     - target: {fileID: 6530775546079936735, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60.6933
+      value: 41.6931
       objectReference: {fileID: 0}
     - target: {fileID: 6530775546079936735, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 54.3864
+      value: 41.6931
       objectReference: {fileID: 0}
     - target: {fileID: 6530775546079936735, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -202.98
+      value: -208.1
       objectReference: {fileID: 0}
     - target: {fileID: 6530775546079936735, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000076294
+      value: -0.000011921
       objectReference: {fileID: 0}
     - target: {fileID: 7002301075137802808, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7002301075137802808, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7002301075137802808, guid: 5b4ae2a6b5cf73b49b3fc690a4c00fbf, type: 3}
       propertyPath: m_AnchoredPosition.x

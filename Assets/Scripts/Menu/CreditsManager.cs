@@ -30,9 +30,9 @@ public class CreditsManager : MonoBehaviour
 
         // Créditos estáticos van haciendo fade in y out
         logoImage.SetActive(true);
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(11f);
         logoImage.SetActive(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         yield return ShowCredit("Julia Ibáñez   Y   Ale Navarro");
         yield return new WaitForSeconds(2f);

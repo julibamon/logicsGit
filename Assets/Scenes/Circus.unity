@@ -206317,7 +206317,7 @@ PrefabInstance:
       objectReference: {fileID: 7898087230199630413}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -206326,6 +206326,17 @@ PrefabInstance:
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
       value: "\xBFCrees que lo tienes ya?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[2]
+      value: "Si te pierdes es mejor volver al principio... el origen de las cosas
+        desvela la verdad de lo que tiene que pasar\u2026 o algo as\xED me dijo mi
+        t\xEDo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[3]
+      value: "Es derecha primero luego derecha luego izquierda luego por la del centro
+        y luego ya me pierdo\u2026 por eso sigo aqu\xED"
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207653,7 +207664,7 @@ PrefabInstance:
       objectReference: {fileID: 7898087230199630413}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -207662,6 +207673,21 @@ PrefabInstance:
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
       value: "Ya hab\xEDamos hablado de esto, \xBFno?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[2]
+      value: "\xBFNo te dan miedo los Constructores esos de ah\xED fuera? Todos quietos,
+        esperando, apagados\u2026 \xA1Qu\xE9 repel\xFAs!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[3]
+      value: "El pueblito de ah\xED arriba aunque lo parezca, no est\xE1 en la superficie,
+        es s\xF3lo uno de los gigantescos agujeros que hicieron los Constructores"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[4]
+      value: "Hay ciudades enormes m\xE1s all\xE1 de los vertederos que nadie recuerda
+        haber olvidado, qui\xE9n las pudiera ver..."
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -207828,7 +207854,7 @@ PrefabInstance:
       objectReference: {fileID: 7898087230199630413}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -207837,6 +207863,22 @@ PrefabInstance:
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
       value: No te equivoques, que casi lo tienes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[2]
+      value: "Las leyendas que se cuentan solo es la verdad que pudo sobrevivir al
+        tiempo y a la verg\xFCenza\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[3]
+      value: "\rExtraer materia azul\u2026 extraer materia azul\u2026 eso ser\xEDa
+        lo que suena en sus cabezas, lo que esos l\xEDderes les ordenaron..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[4]
+      value: "El bosque cada d\xEDa crece m\xE1s y las hojas son enormes en las capas
+        subterr\xE1neas...yo creo que es la venganza de la madre naturaleza o algo, 
+        \xBFno?"
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x

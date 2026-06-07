@@ -203965,7 +203965,7 @@ PrefabInstance:
       objectReference: {fileID: 999642752}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -203973,8 +203973,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
-      value: "Ese Alquimista... me parece a m\xED que est\xE1 m\xE1s loco que yo.
-        Eso s\xED, \xA1vaya casopl\xF3n tiene arriba en el pueblo!"
+      value: "La Mari, esa loca, estuvo por aqu\xED una vez... me dej\xF3 un regalito
+        por contarle la verdad detr\xE1s de las leyendas"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[2]
+      value: "Lo que esa gente encontr\xF3 en el fondo del mundo, la Materia Azul,
+        t\xFA la has visto igual que yo\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[3]
+      value: "Tu eres una n\xF3mada de esas que buscan antiguas tecnolog\xEDas en
+        los vertederos, \xBFno?, \xA1qu\xE9 miedo me dar\xEDa a m\xED meterme ah\xED!\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[4]
+      value: "Los Constructores, las m\xE1quinas esas enormes, se apagaron porque
+        vieron la destrucci\xF3n del mundo... fueron m\xE1s valientes que nosotros"
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -204965,7 +204980,7 @@ PrefabInstance:
       objectReference: {fileID: 999642752}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -204974,6 +204989,21 @@ PrefabInstance:
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
       value: "\xBFNos conocemos?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[2]
+      value: "Sabes lo del Constructor gigante que cuelga sobre el bosque, \xBFno?,
+        nadie me cree pero \xE9l controla las plataformas esas"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[3]
+      value: "\xBFSabes lo que es la tecnocracia? Yo no lo sab\xEDa hasta que me
+        enter\xE9 de lo de los antiguos due\xF1os del mundo\r"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
+      propertyPath: dialogueArea.Array.data[4]
+      value: "Yo creo que fue la exposici\xF3n a la materia azul... el apetito de
+        lo humano... lo que cambi\xF3 a esas m\xE1quinas, \xBFno crees?\r"
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x
@@ -410806,7 +410836,7 @@ PrefabInstance:
       objectReference: {fileID: 999642752}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[0]
@@ -410814,7 +410844,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7355316003132694227, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: dialogueArea.Array.data[1]
-      value: "\xBFNos conocemos?"
+      value: "Yo lo que digo es verdad, \xBFeh? Ya me gustar\xEDa a m\xED mentir,
+        pero es lo que tenemos los locos, que no podemos"
       objectReference: {fileID: 0}
     - target: {fileID: 7403077935397552350, guid: a534f51e90303cc45be069fe70257c10, type: 3}
       propertyPath: m_LocalPosition.x
