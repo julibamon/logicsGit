@@ -12,8 +12,6 @@ public int cantDamage;
         if (coll.gameObject.CompareTag("Player") ) //establecemos que solo ocurra si estamos ante el player (tag player) y estamos vivos
         {
             PlayerController pj = coll.gameObject.GetComponent<PlayerController>();
-            Diablillo enemy1 = coll.gameObject.GetComponent<Diablillo>();
-            Gusano enemy2 = coll.gameObject.GetComponent<Gusano>();
 
             if(pj != null)
             {

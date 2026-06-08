@@ -63,7 +63,7 @@ public void Resume() //funcionalidad para el botón reanudar
 public void GoToMenu()
 {
     Time.timeScale = 1f;
-    //parar la musica al ir al menu principal
+    //parar la musica al ir al menu principal ya que no hay un TP
     if (MusicManager.Instance != null)
         {
             MusicManager.Instance.SetPreserveMusic(false);

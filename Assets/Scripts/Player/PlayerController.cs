@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
         if (MusicManager.Instance != null)
     {
         MusicManager.Instance.SetDeathFilter(true);
-    }
+    }   
     }
 
     private IEnumerator coroutineInvulnerable()
@@ -414,6 +414,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     void OnCollisionExit2D(Collision2D collision)
+
     {
         if (collision.gameObject.CompareTag("MovingPlatform")){
             currentPlatform=null;

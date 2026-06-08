@@ -128,7 +128,7 @@ public class Diablillo : MonoBehaviour
     {
         float horizontalVelocity = 0f;
 
-        if (isFollowing == true)
+        if (isFollowing)
         {
             float direction2Player = Mathf.Sign(player.position.x - transform.position.x);
             //Mathf.Sign devuelve: 1-> si el player está a la dcha

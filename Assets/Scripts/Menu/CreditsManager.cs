@@ -25,10 +25,8 @@ public class CreditsManager : MonoBehaviour
 
     private IEnumerator CreditsSequence()
     {
-        // Pantalla negra
         yield return new WaitForSeconds(blackScreenTime);
 
-        // Créditos estáticos van haciendo fade in y out
         logoImage.SetActive(true);
         yield return new WaitForSeconds(11f);
         logoImage.SetActive(false);
@@ -52,7 +50,6 @@ public class CreditsManager : MonoBehaviour
 
         Color c = creditText.color;
 
-        // Fade In
         float t = 0f;
         while (t < fadeInTime)
         {
@@ -64,10 +61,10 @@ public class CreditsManager : MonoBehaviour
             yield return null;
         }
 
-        // Visible
+
         yield return new WaitForSeconds(visibleTime);
 
-        // Fade Out
+
         t = 0f;
 
         while (t < fadeOutTime)
