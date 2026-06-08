@@ -179,7 +179,7 @@ public class Gusano : MonoBehaviour
     private IEnumerator coroutinePushBack()
     {
         spriteRenderer.color = new Color(0.4279091f, 0.3737985f, 0.4528302f, 1f); //para que parpadee hacia este color al recibir daño (mientras es empujado)
-
+        PlaySoundsPitch("HitGusano"); //sonido al recibir hit
         yield return new WaitForSeconds(0.2f); //esperamos un tiempo quietos para echarnos para atrás tras recibir empujón
 
         spriteRenderer.color = Color.white;
@@ -218,4 +218,18 @@ public class Gusano : MonoBehaviour
     gameObject.SetActive(false);
 }
 
+//sonido segun la camara con pitch aleatorio
+ public void AnimSound(string soundName)
+{
+    SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, true);
+}
+//sonido en primer plano
+public void PlaySoundsPitch(string soundName) { 
+    SoundEffectManager.Instance.Play(soundName, true);
+     } 
+
+public void PlaySounds(string soundName) { 
+    SoundEffectManager.Instance.Play(soundName, false);
+     } 
+     
 }

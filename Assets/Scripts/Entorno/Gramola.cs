@@ -60,4 +60,9 @@ public class Gramola : MonoBehaviour
         }
     }
 
+     //sonido music (es dialogo para que no se superpongan)
+    public void PlayDialogue(string soundName) { 
+        SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
+
 }

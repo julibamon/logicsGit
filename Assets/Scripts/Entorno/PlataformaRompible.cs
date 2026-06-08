@@ -33,6 +33,7 @@ public class PlataformaRompible : MonoBehaviour
     {
         if (!isTriggered && collision.gameObject.tag == "Player")
         {
+            AnimSound("ArbustoCaer");
             StartCoroutine(BreakPlatform());
         }
     }
@@ -51,6 +52,7 @@ public class PlataformaRompible : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             stepLeaves.Play();
+            AnimSound("HojasCaer");
             yield return new WaitForSeconds(0.3f);
         }
 
@@ -62,14 +64,18 @@ public class PlataformaRompible : MonoBehaviour
 
         // explosión y desaparece
         breakLeaves.Play();
+        AnimSound("ArbustoRomperse");
         visual.gameObject.SetActive(false);
         col.enabled = false;
 
         //Reaparece
+       
         yield return new WaitForSeconds(respawnTime);
+         AnimSound("ArbustoRecompon");
         visual.localPosition = originalPos;
         breakLeaves.Play();
         visual.gameObject.SetActive(true);
+        
         col.enabled = true;
 
         isTriggered = false;
@@ -120,6 +126,11 @@ IEnumerator Bounce()
 
         visual.localPosition = originalPos;
 
+    }
+
+    public void AnimSound(string soundName)
+    {
+        SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, true);
     }
 
 }

@@ -30,11 +30,11 @@ public class ComestibleDobleSalto : MonoBehaviour
 
     public void EatComestible()
     {
-
+        PlaySound("Object");
         comestible.SetActive(false);
         Debug.Log("Comido el comestible");
         GameController.Instance.currentSD.playerData.skillsList.Add("DoubleJump"); // añadimos el doble salto a la lista de habilidades
-        MessageMenu.Instance.ShowMessage("** HAS OBTENIDO UN NUEVO PODER: ¡DOBLE SALTO! **");
+        MessageMenu.Instance.ShowMessage("Me siento más poderosa ahora...¡Voy a probar a hacer un salto doble!");
 
 
     }
@@ -60,5 +60,10 @@ public class ComestibleDobleSalto : MonoBehaviour
             canvas.SetActive(false);
         }
     }
+
+    public void PlaySound(string soundName) { 
+        SoundEffectManager.Instance.Play(soundName, false);
+     } 
+
 
 }

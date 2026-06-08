@@ -1,0 +1,217 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4904365113853950795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8752832731289769413}
+  - component: {fileID: 2609070121087397853}
+  - component: {fileID: 1894690198852827715}
+  - component: {fileID: 615228631812586725}
+  m_Layer: 0
+  m_Name: SoundEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8752832731289769413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904365113853950795}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -50.8599, y: 17.340565, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2609070121087397853
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904365113853950795}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1894690198852827715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904365113853950795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed1d7f20a461ba458dfe1345c45d718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffectGroups:
+  - name: Step
+    audioClips:
+    - {fileID: 8300000, guid: 0dddc19b23a93e4429f2175d0940d842, type: 3}
+    - {fileID: 8300000, guid: 75efd7eefdec1684198c980f8c9dcb28, type: 3}
+    - {fileID: 8300000, guid: e6ead15b25e5158488bf2b2034b56037, type: 3}
+  - name: HitGusano
+    audioClips:
+    - {fileID: 8300000, guid: f7e717c94e5215e48a7fd55c1aca1124, type: 3}
+  - name: WalkGusano
+    audioClips:
+    - {fileID: 8300000, guid: de28e30ba42747844b1c4f83a0fd2f0b, type: 3}
+  - name: DieGusano
+    audioClips:
+    - {fileID: 8300000, guid: 4eea27d36f82e744bae9646c0fa9393f, type: 3}
+  - name: AlquimistaVoice
+    audioClips:
+    - {fileID: 8300000, guid: 52929ae5b60a35c4085d42b8da9eede5, type: 3}
+    - {fileID: 8300000, guid: e09ac141d978e92429a86b1a20412136, type: 3}
+    - {fileID: 8300000, guid: a7a0f0e862aef4a459c69f9a9385aab2, type: 3}
+  - name: EstebanVoice
+    audioClips:
+    - {fileID: 8300000, guid: 9bc6988f28ea05041be8db15182db19f, type: 3}
+    - {fileID: 8300000, guid: eadfab60be1796d48a612195f52e81e8, type: 3}
+    - {fileID: 8300000, guid: 5393101d4a3df5648b224dec42702e2b, type: 3}
+    - {fileID: 8300000, guid: bd9941b068fdc074ba6b2b9e87335490, type: 3}
+    - {fileID: 8300000, guid: d2e354f1453251c40a64f108ef73ceb8, type: 3}
+    - {fileID: 8300000, guid: bf6aabca5b026004293a195cac5d3907, type: 3}
+  - name: ViejitasVoice
+    audioClips:
+    - {fileID: 8300000, guid: 6431003aed7e3b748a4dbccad5e7a36c, type: 3}
+    - {fileID: 8300000, guid: 79bf7deca86fb5945b786906e0e4c446, type: 3}
+    - {fileID: 8300000, guid: f1f486402d316874da3334b4d2991391, type: 3}
+    - {fileID: 8300000, guid: 83a162ca74a5d8d478d4755472453119, type: 3}
+    - {fileID: 8300000, guid: 6cd5a69ac43b07747a9e47b2e783028f, type: 3}
+    - {fileID: 8300000, guid: 8f55e80fae0576d4f8b6811f3eb7e242, type: 3}
+  - name: ViejitasRisa
+    audioClips:
+    - {fileID: 8300000, guid: 7b7ff8fab5329a447b3825018bf5f93e, type: 3}
+  - name: DiablilloWalk
+    audioClips:
+    - {fileID: 8300000, guid: c2de6df1247435e41b69609dfc1d2eb9, type: 3}
+  - name: DiablilloHit
+    audioClips:
+    - {fileID: 8300000, guid: b6dc33f6f950df24e879651a9c0b22b6, type: 3}
+  - name: DiablilloDie
+    audioClips:
+    - {fileID: 8300000, guid: 417dcb15d040ae948a188f58b9848420, type: 3}
+  - name: ArbustoCaer
+    audioClips:
+    - {fileID: 8300000, guid: 8d2f0e3bf9fe7ab40ac526b5842c55cc, type: 3}
+  - name: HojasCaer
+    audioClips:
+    - {fileID: 8300000, guid: b1bd6995a282a7240b7b1569afc2d9aa, type: 3}
+  - name: ArbustoRomperse
+    audioClips:
+    - {fileID: 8300000, guid: bc3918ff9cd0baa4fb68395fe3b990a2, type: 3}
+  - name: ArbustoRecompon
+    audioClips:
+    - {fileID: 8300000, guid: 951e5e7b7f6f3dc4a9ca6c9010d7c3fd, type: 3}
+--- !u!114 &615228631812586725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904365113853950795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb6663164d3c7f49b28c0c9ee9affdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXMixer: {fileID: 0}

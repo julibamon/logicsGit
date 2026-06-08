@@ -21,17 +21,17 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -314951982, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: 1018807685, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     - time: 0.04761905
-      value: {fileID: 513522835, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: -1592783936, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     - time: 0.0952381
-      value: {fileID: 1286386439, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: -307561210, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     - time: 0.14285715
-      value: {fileID: 376130223, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: -683378952, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     - time: 0.1904762
-      value: {fileID: -1177827119, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: 1888305811, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     - time: 0.23809524
-      value: {fileID: 1619474623, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+      value: {fileID: -2125927751, guid: db75d41d409d2c647a18263e746efda4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,12 +54,12 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -314951982, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
-    - {fileID: 513522835, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
-    - {fileID: 1286386439, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
-    - {fileID: 376130223, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
-    - {fileID: -1177827119, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
-    - {fileID: 1619474623, guid: 52a65246b17c4b94d938a49f52d6e7d8, type: 3}
+    - {fileID: 1018807685, guid: db75d41d409d2c647a18263e746efda4, type: 3}
+    - {fileID: -1592783936, guid: db75d41d409d2c647a18263e746efda4, type: 3}
+    - {fileID: -307561210, guid: db75d41d409d2c647a18263e746efda4, type: 3}
+    - {fileID: -683378952, guid: db75d41d409d2c647a18263e746efda4, type: 3}
+    - {fileID: 1888305811, guid: db75d41d409d2c647a18263e746efda4, type: 3}
+    - {fileID: -2125927751, guid: db75d41d409d2c647a18263e746efda4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -85,6 +85,13 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: PlaySounds
+    data: EspadaTajo
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.04761905
     functionName: SwordHitBoxON
     data: 

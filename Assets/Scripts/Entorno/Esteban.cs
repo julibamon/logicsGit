@@ -105,6 +105,8 @@ public class Esteban : MonoBehaviour
 
         lineIndex = numRandom;
 
+        PlayDialogue("EstebanVoice");
+
         StartCoroutine(LinesCoroutine()); //llamamos a la corrutina
 
     }
@@ -183,7 +185,10 @@ private void NextDialogue()
         }
     }
 
-    //para entregar o no el caldero
+        //sonido en primer plano
+    public void PlayDialogue(string soundName) { 
+        SoundEffectManager.Instance.PlayDialogue(soundName, false);
+     } 
      
 
 }

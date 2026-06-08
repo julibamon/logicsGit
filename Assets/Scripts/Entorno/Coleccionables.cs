@@ -32,7 +32,7 @@ public class Coleccionables : MonoBehaviour
 
     public void GetColeccionable()
     {
-
+        PlaySound("Object");
         coleccionable.SetActive(false);
         Debug.Log("Cogido el coleccionable"+ nombreObjeto);
         GameController.Instance.currentSD.worldData.itemsListW.Add(nombreObjeto); // añadimos el coleccionable a la lista de objetos
@@ -75,5 +75,10 @@ public class Coleccionables : MonoBehaviour
             canvas.SetActive(false);
         }
     }
+
+
+    public void PlaySound(string soundName) { 
+        SoundEffectManager.Instance.Play(soundName, false);
+     } 
 
 }

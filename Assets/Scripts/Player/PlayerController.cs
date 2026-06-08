@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     //COYOTE TIME
     public float coyoteTime=0.15f;
-    private float coyoteTimeCont;
+    public float jumpLockCont;
+    private float coyoteTimeCont = 0f;
 
 
 
@@ -127,13 +128,14 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,groundLayer);
 
         //COYOTE TIME
-        if (isGrounded)
+        if (isGrounded && jumpLockCont <= 0)
         {
             coyoteTimeCont = coyoteTime; //si aun estamos en el suelo tenemos el tiempo completo disponible
         }
         else
         {
             coyoteTimeCont -= Time.deltaTime; //si hemos salido del suelo vamos descontando
+            jumpLockCont -= Time.deltaTime;
         }
 
         //DOBLE SALTO, RESETEO AL TOCAR EL SUELO
@@ -148,8 +150,11 @@ public class PlayerController : MonoBehaviour
         {
             if(coyoteTimeCont >0f)
             {
+                rigidbody2.velocity = new Vector2(rigidbody2.velocity.x, 0f);
                 rigidbody2.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                AnimSoundNo("Jump"); //sonido jump
                 coyoteTimeCont = 0f; //para evitar multiples altos
+                jumpLockCont = coyoteTime;
             }
             else if(jumpsLeft > 0 && skillsList.Contains("DoubleJump")) //si tenemos los saltos reiniciados y hemos cogido la habilidad
             {
@@ -160,6 +165,7 @@ public class PlayerController : MonoBehaviour
 
                 // activar animación de doble salto
                 animator.SetTrigger("DoubleJump");
+
             }
         }
 
@@ -179,7 +185,7 @@ public class PlayerController : MonoBehaviour
             rigidbody2.velocity = Vector2.zero;
             animator.SetTrigger("Hit");
             isHurted=false;
-         }   
+        }
     }
     void FixedUpdate() //donde se mueve cualquier elemento del juego realmente
     {
@@ -187,13 +193,19 @@ public class PlayerController : MonoBehaviour
             //movimiento de desplazamiento del personaje
             float horizontalVelocity = movement.normalized.x * speed;
             Vector2 finalVelocity= new Vector2(horizontalVelocity, rigidbody2.velocity.y); //velocity.y porque sino siempre va a flotar si lo ponemos a 0
-
+ 
             //plataformas moviles
             if(currentPlatform !=null && isGrounded) //si estoy encima de una plataforma movil
             {
                 finalVelocity.x += currentPlatform.PlatformVelocity.x;
+                //rigidbody2.sharedMaterial.friction = 5f;
+            } else
+            {
+                //rigidbody2.sharedMaterial.friction = 0.0f;
+
             }
             rigidbody2.velocity = finalVelocity;
+            
         }
         
     }
@@ -283,7 +295,7 @@ public class PlayerController : MonoBehaviour
 
         
           
-                transform.position = new Vector2(PlayerData.checkpointX,PlayerData.checkpointY); 
+                transform.position = new Vector3(PlayerData.checkpointX,PlayerData.checkpointY,-1.46f); 
             UpdateHealthUI();
         }
     }
@@ -293,7 +305,7 @@ public class PlayerController : MonoBehaviour
     {
         if(GameController.Instance!=null && GameController.Instance.currentSD != null)
         {
-           transform.position = GameController.Instance.nextSpawnPosition;
+           transform.position = new Vector3(GameController.Instance.nextSpawnPosition.x, GameController.Instance.nextSpawnPosition.y, -1.46f);
             GameController.Instance.useNextSpawn = false;
 
             Debug.Log("Teletransportandome tengo "+ GameController.Instance.currentHealthTP+" puntos de vida");
@@ -364,8 +376,13 @@ public class PlayerController : MonoBehaviour
     //método morir
     private void Die()
     {
+        PlaySounds("Death");
         Time.timeScale = 0f; //se pausa el juego
         DeathMenu.SetActive(true); //se despliega el menú
+        if (MusicManager.Instance != null)
+    {
+        MusicManager.Instance.SetDeathFilter(true);
+    }   
     }
 
     private IEnumerator coroutineInvulnerable()
@@ -397,10 +414,37 @@ public class PlayerController : MonoBehaviour
         }
     }
     void OnCollisionExit2D(Collision2D collision)
+
     {
         if (collision.gameObject.CompareTag("MovingPlatform")){
             currentPlatform=null;
         }
     }
+
+    //para reproducir los sonidos del player
+
+    //pitch random true
+    public void PlaySoundsPitch(string soundName)
+    {
+        SoundEffectManager.Instance.Play(soundName, true);
+    }
+
+    //pitch random false
+    public void PlaySounds(string soundName)
+    {
+        SoundEffectManager.Instance.Play(soundName, false);
+        
+    }
+
+    //sonido ambiental (pasos) con pitch cambiado
+    public void AnimSound(string soundName)
+{
+    SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, true);
+}
+
+    public void AnimSoundNo(string soundName)
+{
+    SoundEffectManager.Instance.PlayAtPosition(soundName, transform.position, false);
+}
 }
 
