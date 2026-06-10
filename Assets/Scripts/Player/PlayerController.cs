@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -340,11 +339,10 @@ public class PlayerController : MonoBehaviour
         GameController.Instance.currentSD.playerData.skillsList = skillsList;
         GameController.Instance.currentSD.playerData.currentNameScene = SceneManager.GetActiveScene().name;
 
-        Debug.Log("SaveData actualizado desde PlayerController");
     }
     else
     {
-        Debug.LogWarning("No se pudo actualizar SaveDatan porque GameController o currentSD es null");
+        Debug.LogWarning("No se pudo actualizar SaveData porque GameController o currentSD es null");
     }
     }
 

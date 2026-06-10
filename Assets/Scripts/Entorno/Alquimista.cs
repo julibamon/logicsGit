@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using Unity.Collections;
-using Unity.VisualScripting;
 
 public class Alquimista : MonoBehaviour
 {
